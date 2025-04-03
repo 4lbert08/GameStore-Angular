@@ -1,0 +1,34 @@
+<div class="gameInShopping-card">
+  <div class="gameInShopping-status">In Cart</div>
+  <div class="gameInShopping-content">
+    <div class="product-image">
+      <img src="{{gameCover}}" alt="">
+      <div class="product-name">{{gameName}}</div>
+    </div>
+
+    <div class="gameInShopping-details">
+      <div class="gameInShopping-specs">
+        <div class="spec-item">
+          <span class="spec-label">System: {{gameSystem}}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Platform: {{gamePlatform}}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Price: {{gamePrice}}$</span>
+        </div>
+      </div>
+      <div class="gameInShopping-price"></div>
+      <div class="quantity-container">
+        <input type="number" class="quantity-input" value="1" min="1">
+      </div>
+    </div>
+
+
+    <div class="gameInShopping-actions">
+      <button class="remove-btn">🗑 Delete</button>
+      <button class="checkout-btn">💳 Proceed to payment</button>
+    </div>
+  </div>
+</div>
+
