@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-game-in-cart',
+  selector: 'app-game-in-cart-component',
   imports: [],
   templateUrl: './game-in-cart.component.html',
   styleUrl: './game-in-cart.component.css'
