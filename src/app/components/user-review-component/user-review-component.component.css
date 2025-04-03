@@ -1,0 +1,33 @@
+@import url('../../../../public/fonts.css');
+
+.gameName, .review, .userName {
+  font-family: "Genos", sans-serif;
+  color: white;
+}
+
+.userReview {
+  background-color: #282727;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-width: 75rem;
+  height: auto;
+  padding: 1rem;
+  border-bottom: 0.125rem solid black;
+}
+
+.userAvatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+
+.gameCover {
+  border-radius: 1.25rem;
+  height: 12rem;
+  width: 10rem;
+  object-fit: cover;
+}
