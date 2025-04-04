@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {collection, collectionData, doc, docData, Firestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {Game} from '../../models/game';
+import {Developer} from '../../models/developer';
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,8 @@ export class FirestoreService {
     return docData(gameDocRef, { idField: 'id' });
   }
 
+  getDevelopers(): Observable<Developer[]> {
+    const developerRef = collection(this.firestore, 'developers');
+    return collectionData(developerRef, { idField: 'name' }) as Observable<Developer[]>;
+  }
 }

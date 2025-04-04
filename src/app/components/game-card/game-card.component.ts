@@ -20,7 +20,7 @@ export class GameCardComponent {
 
   onCardClick(): void {
     if (this.gameId) {
-      this.router.navigate(['game', this.gameId]).then(() => {
+      this.router.navigate(['gamePage', this.gameId]).then(() => {
         window.scrollTo(0, 0);
       });
     }
