@@ -1,5 +1,4 @@
-<div class="cards-container">
-  <a routerLink="gamePage">
+<div class="cards-container" (click)="onCardClick()">
     <div class="game-card">
       <img src="{{ gameCover }}" class="game-card__cover">
       <div class="game-card__info">
@@ -7,5 +6,4 @@
         <p class="game-card__price">{{ gamePrice }}</p>
       </div>
     </div>
-  </a>
 </div>

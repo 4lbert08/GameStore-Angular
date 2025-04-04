@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {GameCardComponentComponent} from '../../components/game-card-component/game-card-component.component';
+import {GameCardComponent} from '../../components/game-card/game-card.component';
 
 @Component({
   selector: 'app-landing-page',
   imports: [
-    GameCardComponentComponent
+    GameCardComponent
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
