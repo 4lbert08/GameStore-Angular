@@ -1,7 +1,5 @@
-@import url('../../../../public/fonts.css');
 
 .gameName, .review, .userName {
-  font-family: "Genos", sans-serif;
   color: white;
 }
 
