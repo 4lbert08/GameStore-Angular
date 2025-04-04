@@ -1,0 +1,18 @@
+<section class="gallery-container" data-gallery>
+  <div class="title">
+    <h2>Título de la sección</h2>
+    <button (click)="navigateToViewMore()">SEE MORE</button>
+  </div>
+
+  <div class="gallery">
+    <app-game-card
+      *ngFor="let game of games.slice(0, 5); let i = index"
+      [gameId]="game.id"
+      [gameName]="game.name"
+      [gameCover]="game.gameCover"
+      [gamePrice]="game.price"
+      id="card{{i+1}}"
+      class="card__game">
+    </app-game-card>
+  </div>
+</section>
