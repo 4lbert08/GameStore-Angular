@@ -1,15 +1,7 @@
-export interface IDeveloper {
+export interface Developer {
   id: string;
   name: string;
   image: string;
   work: string;
   gmail: string;
-}
-
-export class Developer {
-  id!: string;
-  name!: string;
-  image!: string;
-  work!: string;
-  gmail!: string;
 }

@@ -3,7 +3,6 @@ import { DeveloperCardComponent } from '../../components/developer-card/develope
 import { NgForOf } from '@angular/common';
 import { Developer } from '../../models/developer';
 import { FirestoreService } from '../../services/firestore/firestore.service';
-import {TypedLoaderService} from '../../services/typed-loader/typed-loader.service';
 
 @Component({
   selector: 'app-about-us-page',
@@ -17,14 +16,12 @@ import {TypedLoaderService} from '../../services/typed-loader/typed-loader.servi
 })
 export class AboutUsPageComponent implements OnInit {
   private firestoreService = inject(FirestoreService);
-  private loader = inject(TypedLoaderService);
 
   developers: Developer[] = [];
 
   ngOnInit(): void {
-    this.loader.load(Developer, this.firestoreService.getDevelopers());
-    this.loader.getData$(Developer).subscribe(devs => {
+    this.firestoreService.getDevelopers().subscribe(devs => {
       if (devs) this.developers = devs;
-    });
+    })
   }
 }

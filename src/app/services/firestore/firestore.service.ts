@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {collection, collectionData, doc, docData, Firestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
-import {IGame} from '../../models/game';
-import {IDeveloper} from '../../models/developer';
+import {Game} from '../../models/game';
+import {Developer} from '../../models/developer';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +11,18 @@ export class FirestoreService {
 
   constructor(private firestore: Firestore) { }
 
-  getGames(): Observable<IGame[]> {
+  getGames(): Observable<Game[]> {
     const gameRef = collection(this.firestore, 'games');
-    return collectionData(gameRef, { idField: 'id' }) as Observable<IGame[]>;
+    return collectionData(gameRef, { idField: 'id' }) as Observable<Game[]>;
   }
 
   getGameById(gameId: string): Observable<any> {
     const gameDocRef = doc(this.firestore, `games/${gameId}`);
-    return docData(gameDocRef, { idField: 'id' });
+    return docData(gameDocRef, { idField: 'id' }) as Observable<Game>;
   }
 
-  getDevelopers(): Observable<IDeveloper[]> {
+  getDevelopers(): Observable<Developer[]> {
     const developerRef = collection(this.firestore, 'developers');
-    return collectionData(developerRef, { idField: 'id' }) as Observable<IDeveloper[]>;
+    return collectionData(developerRef, { idField: 'id' }) as Observable<Developer[]>;
   }
 }
