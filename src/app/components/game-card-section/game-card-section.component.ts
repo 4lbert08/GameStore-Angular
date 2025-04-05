@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {Game} from '../../models/game';
 import {FirestoreService} from '../../services/firestore/firestore.service';
+import {TypedLoaderService} from '../../services/typed-loader/typed-loader.service';
 
 @Component({
   selector: 'app-game-card-section',
@@ -15,34 +16,19 @@ import {FirestoreService} from '../../services/firestore/firestore.service';
   templateUrl: './game-card-section.component.html',
   styleUrl: './game-card-section.component.css'
 })
-
 export class GameCardSectionComponent implements OnInit {
+  title: string = "";
   firestoreService = inject(FirestoreService);
   router = inject(Router);
+  loader = inject(TypedLoaderService);
 
   games: Game[] = [];
-  loading: boolean = true;
-  error: string | null = null;
-
 
   ngOnInit(): void {
-    this.loadGames();
-  }
-
-  loadGames(): void {
-    this.loading = true;
-    this.firestoreService.getGames().subscribe({
-      next: (games) => {
-        this.games = games;
-        console.log(this.games);
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Error al cargar los juegos:', err);
-        this.error = 'No se pudieron cargar los juegos. Por favor, inténtalo de nuevo más tarde.';
-        this.loading = false;
-      }
-    });
+    this.loader.load(Game, this.firestoreService.getGames());
+    this.loader.getData$(Game).subscribe(games => {
+      if (games) this.games = games;
+    })
   }
 
   navigateToViewMore(): void {

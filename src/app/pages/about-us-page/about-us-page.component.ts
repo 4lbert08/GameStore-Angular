@@ -1,9 +1,9 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {DeveloperCardComponent} from '../../components/developer-card/developer-card.component';
-import {NgForOf} from '@angular/common';
-import {Developer} from '../../models/developer';
-import {FirestoreService} from '../../services/firestore/firestore.service';
-import {Router} from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { DeveloperCardComponent } from '../../components/developer-card/developer-card.component';
+import { NgForOf } from '@angular/common';
+import { Developer } from '../../models/developer';
+import { FirestoreService } from '../../services/firestore/firestore.service';
+import {TypedLoaderService} from '../../services/typed-loader/typed-loader.service';
 
 @Component({
   selector: 'app-about-us-page',
@@ -16,31 +16,15 @@ import {Router} from '@angular/router';
   styleUrl: './about-us-page.component.css'
 })
 export class AboutUsPageComponent implements OnInit {
-  firestoreService = inject(FirestoreService);
-  router = inject(Router);
+  private firestoreService = inject(FirestoreService);
+  private loader = inject(TypedLoaderService);
 
   developers: Developer[] = [];
-  loading: boolean = true;
-  error: string | null = null;
-
 
   ngOnInit(): void {
-    this.loadDevelopers();
-  }
-
-  loadDevelopers(): void {
-    this.loading = true;
-    this.firestoreService.getDevelopers().subscribe({
-      next: (developers) => {
-        this.developers = developers;
-        console.log(this.developers);
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Error al cargar los desarrolladores:', err);
-        this.error = 'No se pudieron cargar los desarrolladores. Por favor, inténtalo de nuevo más tarde.';
-        this.loading = false;
-      }
+    this.loader.load(Developer, this.firestoreService.getDevelopers());
+    this.loader.getData$(Developer).subscribe(devs => {
+      if (devs) this.developers = devs;
     });
   }
 }
