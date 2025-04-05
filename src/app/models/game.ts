@@ -1,15 +1,15 @@
 export interface Game {
   id: string;
   name: string;
-  available: boolean;
+  stock: boolean;
   description: string;
-  discount: number;
+  amount: number;
+  currency: string;
   gameCover: string;
   genres: string[];
   images: string[];
   pegi: number;
   platform: string;
-  price: number;
   releaseDate: string;
   system: string;
   trailer: string;

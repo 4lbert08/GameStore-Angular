@@ -10,7 +10,7 @@
       [gameId]="game.id"
       [gameName]="game.name"
       [gameCover]="game.gameCover"
-      [gamePrice]="game.price"
+      [gamePrice]="game.amount + ' ' + game.currency"
       id="card{{i+1}}"
       class="card__game">
     </app-game-card>

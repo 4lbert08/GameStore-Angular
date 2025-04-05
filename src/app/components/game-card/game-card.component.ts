@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, numberAttribute} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class GameCardComponent {
   @Input() gameId: string = "";
   @Input() gameCover: string ="";
   @Input() gameName: string ="";
-  @Input() gamePrice: number = 0;
+  @Input() gamePrice: string = "";
 
   constructor(private router: Router) {}
 

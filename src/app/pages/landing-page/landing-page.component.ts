@@ -5,6 +5,7 @@ import {DeveloperCardComponent} from '../../components/developer-card/developer-
 
 @Component({
   selector: 'app-landing-page',
+  standalone: true,
   imports: [
     GameCardComponent,
     GameCardSectionComponent,
