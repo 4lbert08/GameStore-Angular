@@ -10,11 +10,10 @@ export class TypedLoaderService {
 
   constructor() {}
 
-  load<T>(model: Type<T>, source$: Observable<T[]>): void {
+  load<T>(model: Type<T>, source$: Observable<T | T[]>): void {
     const key = this.getKey(model);
 
     let subject = this.subjectsMap.get(key);
-
     if (!subject) {
       subject = new BehaviorSubject<T | T[] | null>(null);
       this.subjectsMap.set(key, subject);
@@ -26,26 +25,30 @@ export class TypedLoaderService {
         return of(null);
       })
     ).subscribe(data => {
-      if (Array.isArray(data)) {
-        const instances = data.map((item: any) => Object.assign(Object.create(model.prototype), item));
-        subject!.next(instances);
-      } else if (data) {
-        subject!.next(Object.assign(Object.create(model.prototype), data));
-      } else {
+      if (data === null) {
         subject!.next(null);
+        return;
+      } else if (Array.isArray(data)) {
+        const instances = data.map(item =>
+          Object.assign(Object.create(model.prototype), item)
+        );
+        subject!.next(instances);
+      } else {
+        const instance = Object.assign(Object.create(model.prototype), data);
+        subject!.next(instance);
       }
     });
   }
 
-  getData$<T>(model: Type<T>): Observable<T[]> {
+  getData$<T>(model: Type<T>): Observable<T | T[] | null> {
     const key = this.getKey(model);
 
     let subject = this.subjectsMap.get(key);
-
     if (!subject) {
-      subject = new BehaviorSubject<T | null>(null);
+      subject = new BehaviorSubject<T | T[] | null>(null);
       this.subjectsMap.set(key, subject);
     }
+
     return subject.asObservable();
   }
 
