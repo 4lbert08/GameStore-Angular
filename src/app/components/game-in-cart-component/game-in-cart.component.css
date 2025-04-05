@@ -15,6 +15,17 @@
   transform: translateY(-5px);
 }
 
+.gameInShopping-status {
+  top: 0.9375rem;
+  right: 0.9375rem;
+  background-color: #6a33ab;
+  color: #ffffff;
+  padding: 0.5rem 0.9375rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
 .gameInShopping-content {
   display: flex;
   padding: 1rem;
@@ -39,29 +50,8 @@
   object-fit: cover;
 }
 
-.product-logo {
-  position: absolute;
-  bottom: 0.625rem;
-  left: 0.625rem;
-  width: 3.75rem;
-}
-
 .gameInShopping-details {
   flex: 1;
-}
-
-.gameInShopping-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.gameInShopping-store {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #ffffff;
 }
 
 .gameInShopping-specs {
@@ -79,16 +69,6 @@
   font-weight: bold;
 }
 
-.download-link {
-  text-align: center;
-  margin-top: 1.25rem;
-  padding: 0.5rem;
-  color: #ffffff;
-  background-color: #6a33ab;
-  border-radius: 0.375rem;
-  text-decoration: none;
-}
-
 .product-name {
   background-color: rgba(0, 0, 0, 0.7);
   color: #ffffff;
@@ -102,38 +82,11 @@
   font-size: 0.875rem;
 }
 
-.gameInShopping-status {
-  top: 0.9375rem;
-  right: 0.9375rem;
-  background-color: #6a33ab;
-  color: #ffffff;
-  padding: 0.5rem 0.9375rem;
-  border-radius: 0.375rem;
-  font-weight: bold;
-  font-size: 0.875rem;
-}
-
 .quantity-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
-}
-
-.quantity-btn {
-  background-color: #6a33ab;
-  color: #ffffff;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.quantity-btn:hover {
-  background-color: #4b237f;
 }
 
 .quantity-input {
@@ -214,28 +167,12 @@
     width: 100%;
   }
 
-  .gameInShopping-header {
-    flex-direction: column;
-  }
-
-  .gameInShopping-date {
-    margin-bottom: 0.5rem;
-  }
-
   .gameInShopping-status {
     top: 0.5rem;
     right: 0.5rem;
     font-size: 0.75rem;
     padding: 0.375rem 0.75rem;
     z-index: 1;
-  }
-
-  .download-link {
-    text-align: center;
-    margin-top: 1.25rem;
-    padding: 0.5rem;
-    background-color: #6a33ab;
-    border-radius: 0.375rem;
   }
 
   .gameInShopping-actions {
