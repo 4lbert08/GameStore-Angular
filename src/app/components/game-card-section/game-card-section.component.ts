@@ -16,7 +16,7 @@ import {FirestoreService} from '../../services/firestore/firestore.service';
   styleUrl: './game-card-section.component.css'
 })
 
-export class GalleryComponent implements OnInit {
+export class GameCardSectionComponent implements OnInit {
   firestoreService = inject(FirestoreService);
   router = inject(Router);
 

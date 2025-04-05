@@ -23,6 +23,6 @@ export class FirestoreService {
 
   getDevelopers(): Observable<Developer[]> {
     const developerRef = collection(this.firestore, 'developers');
-    return collectionData(developerRef, { idField: 'name' }) as Observable<Developer[]>;
+    return collectionData(developerRef, { idField: 'id' }) as Observable<Developer[]>;
   }
 }

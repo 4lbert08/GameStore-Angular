@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { GameCardSectionComponent } from './game-card-section.component';
 
 describe('GameCardSectionComponent', () => {

@@ -1,6 +1,7 @@
 export interface Developer {
+  id: string;
   name: string;
   image: string;
-  occupation: string;
+  work: string;
   gmail: string;
 }
