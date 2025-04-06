@@ -12,7 +12,7 @@ import {GameSectionTransferService} from '../../services/game-section-tranfer/ga
   ],
   styleUrls: ['./view-more-section-page.component.css']
 })
-export class ViewMoreSectionPageComponent implements OnInit, OnDestroy {
+export class ViewMoreSectionPageComponent implements OnInit{
   gameSectionTransferService = inject(GameSectionTransferService)
 
   title: string = '';
@@ -27,10 +27,5 @@ export class ViewMoreSectionPageComponent implements OnInit, OnDestroy {
       this.title = 'Sección';
       this.games = [];
     }
-  }
-
-  ngOnDestroy(): void {
-    this.gameSectionTransferService.clearSectionData();
-    console.log('Datos de la sección limpiados al salir de ViewMoreSectionPage');
   }
 }
