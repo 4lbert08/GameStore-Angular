@@ -3,6 +3,7 @@ import {Game} from '../../models/game';
 
 @Component({
   selector: 'app-game-in-cart-component',
+  standalone: true,
   imports: [],
   templateUrl: './game-in-cart.component.html',
   styleUrl: './game-in-cart.component.css'
