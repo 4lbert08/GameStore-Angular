@@ -88,5 +88,4 @@ export class FirestoreService {
       { idField: 'id' }
     ) as Observable<Review[]>;
   }
-
 }
