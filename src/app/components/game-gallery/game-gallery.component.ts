@@ -6,6 +6,7 @@ import {GameCardComponent} from '../game-card/game-card.component';
 @Component({
   selector: 'app-game-gallery',
   templateUrl: './game-gallery.component.html',
+  standalone: true,
   imports: [
     NgForOf,
     GameCardComponent

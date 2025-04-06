@@ -3,6 +3,7 @@ import {GameCardComponent} from '../game-card/game-card.component';
 import {Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {Game} from '../../models/game';
+import {GameSectionTransferService} from '../../services/game-section-tranfer/game-section-transfer.service';
 
 @Component({
   selector: 'app-game-card-section',
@@ -16,11 +17,13 @@ import {Game} from '../../models/game';
 })
 export class GameCardSectionComponent {
   router = inject(Router);
+  gameSectionTransfer =  inject(GameSectionTransferService);
 
   @Input() title: string = "";
   @Input() games: Game[] = [];
 
   navigateToViewMore(): void {
-    this.router.navigate(['/view-more-sections']);
+    this.gameSectionTransfer.setSectionData(this.title, this.games);
+    this.router.navigate(["view-more-section-page"]);
   }
 }
