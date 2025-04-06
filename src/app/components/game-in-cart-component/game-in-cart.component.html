@@ -2,20 +2,20 @@
   <div class="gameInShopping-status">In Cart</div>
   <div class="gameInShopping-content">
     <div class="product-image">
-      <img src="{{gameCover}}" alt="">
-      <div class="product-name">{{gameName}}</div>
+      <img src="{{game.gameCover}}" alt="">
+      <div class="product-name">{{game.name}}</div>
     </div>
 
     <div class="gameInShopping-details">
       <div class="gameInShopping-specs">
         <div class="spec-item">
-          <span class="spec-label">System: {{gameSystem}}</span>
+          <span class="spec-label">System: {{game.system}}</span>
         </div>
         <div class="spec-item">
-          <span class="spec-label">Platform: {{gamePlatform}}</span>
+          <span class="spec-label">Platform: {{game.platform}}</span>
         </div>
         <div class="spec-item">
-          <span class="spec-label">Price: {{gamePrice}}$</span>
+          <span class="spec-label">Price: {{game.amount}} {{game.currency}}$</span>
         </div>
       </div>
       <div class="gameInShopping-price"></div>

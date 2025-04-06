@@ -1,5 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {Review} from '../../models/review';
+import {FirestoreService} from '../../services/firestore/firestore.service';
+import {Game} from '../../models/game';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-user-review-component',
@@ -11,10 +15,18 @@ import {CommonModule} from '@angular/common';
 export class UserReviewComponentComponent {
   @Input() public showGameInfo: boolean = true;
   @Input() public showUserInfo: boolean = true;
-  @Input() public gameCover: string = "";
-  @Input() public gameName: string = "";
-  @Input() public gameLink: string = "";
-  @Input() public userName: string = "";
-  @Input() public userAvatar: string = "";
-  @Input() public review: string = "";
+  @Input() public review!: Review;
+  firestoreService = inject(FirestoreService);
+  game!: Game;
+  user!: User;
+
+  ngOnInit(): void {
+    this.firestoreService.getGameById(this.review.gameId).subscribe(game => {
+      this.game = game;
+    });
+
+    this.firestoreService.getUserById(this.review.userId).subscribe(user => {
+      this.user = user;
+    });
+  }
 }

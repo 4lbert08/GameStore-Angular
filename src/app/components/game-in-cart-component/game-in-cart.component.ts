@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Game} from '../../models/game';
 
 @Component({
   selector: 'app-game-in-cart-component',
@@ -7,9 +8,5 @@ import {Component, Input} from '@angular/core';
   styleUrl: './game-in-cart.component.css'
 })
 export class GameInCartComponent {
-  @Input() gameCover: string ="";
-  @Input() gameName: string ="";
-  @Input() gameSystem: string ="";
-  @Input() gamePlatform: string ="";
-  @Input() gamePrice: number = 0;
+  @Input() game!: Game;
 }
