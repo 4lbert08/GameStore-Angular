@@ -1,9 +1,9 @@
-<app-game-card-section />
-
 <div class="main_container">
   <div class="main">
     <app-game-card-section
-      *ngFor="let section of sections.slice(0,3); let i = index;"
+      *ngFor="let section of sections.slice(0, 3); let i = index"
+      [title]="section.title"
+      [games]="section.games"
     />
   </div>
 </div>
