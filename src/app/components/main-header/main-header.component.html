@@ -1,0 +1,45 @@
+<header>
+  <div class="mainHeader">
+    <div class="mainHeader__select-container">
+      <select id="languageSelect" [(ngModel)]="selectedLanguage">
+        <option value="none" disabled>-- Language --</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+      </select>
+    </div>
+
+    <div class="mainHeader__search-bar">
+      <form (ngSubmit)="search()" #searchForm="ngForm">
+        <input
+          type="text"
+          name="query"
+          placeholder="Search"
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="onSearchQueryChange()"
+          aria-label="Search games"
+        />
+      </form>
+      <button class="mainHeader__search-bar__search-icon" (click)="goToAdvancedSearch()" aria-label="Go to advanced search">
+        <img src="/imgs/search-icon.webp" alt="Search Button" />
+      </button>
+      <button class="mainHeader__advanced-search" (click)="goToAdvancedSearch()" aria-label="Go to advanced search">
+        Advanced Search
+      </button>
+    </div>
+
+    <div class="mainHeader__logo">
+      <a routerLink="/" aria-label="Home">
+        <img src="/imgs/logo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <div class="mainHeader__icons">
+      <a id="cartLink" routerLink="" aria-label="View cart">
+        <img id="cartIcon" src="/imgs/carrito.webp" alt="Cart" />
+      </a>
+      <a id="logLink" routerLink="" aria-label="Log in">
+        <img id="logIcon" src="/imgs/log_in_icon.png" alt="User" />
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { Game } from '../../models/game';
 import {GameGalleryComponent} from '../../components/game-gallery/game-gallery.component';
 import {GameSectionTransferService} from '../../services/game-section-tranfer/game-section-transfer.service';

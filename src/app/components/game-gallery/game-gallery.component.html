@@ -11,7 +11,7 @@
 
   <div class="pagination">
     <button id="prevPage" (click)="prevPage()" [disabled]="currentPage === 1">◁</button>
-    <span id="pageNumber">{{ currentPage }} de {{ totalPages }}</span>
+    <span id="pageNumber">{{ currentPage }} of {{ totalPages }}</span>
     <button id="nextPage" (click)="nextPage()" [disabled]="currentPage === totalPages">▷</button>
   </div>
 </section>
