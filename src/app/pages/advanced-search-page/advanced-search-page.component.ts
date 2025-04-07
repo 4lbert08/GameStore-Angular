@@ -3,15 +3,12 @@ import { GameGalleryComponent } from '../../components/game-gallery/game-gallery
 import { Game } from '../../models/game';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-import {GameSearchService, SearchFilters} from '../../services/game-search/game-search.service';
+import { GameSearchService, SearchFilters } from '../../services/game-search/game-search.service';
 
 @Component({
   selector: 'app-advanced-search-page',
   standalone: true,
-  imports: [
-    GameGalleryComponent,
-    FormsModule
-  ],
+  imports: [GameGalleryComponent, FormsModule],
   templateUrl: './advanced-search-page.component.html',
   styleUrl: './advanced-search-page.component.css'
 })
@@ -33,17 +30,6 @@ export class AdvancedSearchPageComponent implements OnInit, OnDestroy {
       console.log('Filters received in AdvancedSearchPageComponent:', filters);
       this.filters = filters;
     });
-
-    const storedFilters = localStorage.getItem('searchFilters');
-    if (storedFilters) {
-      const parsedFilters = JSON.parse(storedFilters);
-      if (parsedFilters.pegi) {
-        parsedFilters.pegi = Number(parsedFilters.pegi);
-      }
-      this.gameSearchService.applyFilters(parsedFilters);
-    } else {
-      this.gameSearchService.loadAllGames();
-    }
   }
 
   ngOnDestroy(): void {
