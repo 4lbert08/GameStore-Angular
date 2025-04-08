@@ -4,11 +4,13 @@ import { Game } from '../../models/game';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { GameSearchService, SearchFilters } from '../../services/game-search/game-search.service';
+import {FooterComponent} from '../../components/footer/footer.component';
+import {SecondaryHeaderComponent} from '../../components/secondary-header/secondary-header.component';
 
 @Component({
   selector: 'app-advanced-search-page',
   standalone: true,
-  imports: [GameGalleryComponent, FormsModule],
+  imports: [GameGalleryComponent, FormsModule, FooterComponent, SecondaryHeaderComponent],
   templateUrl: './advanced-search-page.component.html',
   styleUrl: './advanced-search-page.component.css'
 })

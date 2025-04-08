@@ -5,11 +5,13 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FirestoreService } from '../../services/firestore/firestore.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import {GameCardSectionComponent} from '../../components/game-card-section/game-card-section.component';
+import {MainHeaderComponent} from '../../components/main-header/main-header.component';
+import {FooterComponent} from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-game-showcase-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, GameCardSectionComponent],
+  imports: [CommonModule, RouterLink, GameCardSectionComponent, MainHeaderComponent, FooterComponent],
   templateUrl: './game-showcase-page.component.html',
   styleUrls: ['./game-showcase-page.component.css']
 })

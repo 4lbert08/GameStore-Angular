@@ -1,18 +1,14 @@
 <nav class="navbar fixed-top bg-body-tertiary secondHeader">
 
-  <div class="dropdown ">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Select language
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item active" >English</a></li>
-      <li><a class="dropdown-item" >Spanish</a></li>
-    </ul>
-  </div>
-    <a class=" logo" routerLink=""><img  src="imgs/logo.png"></a>
+  <select id="languageSelect" [(ngModel)]="selectedLanguage">
+    <option value="none" disabled>-- Language --</option>
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+  </select>
+    <a class=" logo" routerLink=""><img  src="/imgs/logo.png"></a>
     <div class="nav-item icons">
-      <a routerLink=""><img  src="imgs/carrito.webp"></a>
-      <a  routerLink=""><img  src="imgs/profile_icon.webp"></a>
+      <a routerLink=""><img  src="/imgs/carrito.webp"></a>
+      <a  routerLink=""><img  src="/imgs/log_in_icon.png"></a>
     </div>
 
 </nav>
