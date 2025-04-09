@@ -1,9 +1,17 @@
 <app-main-header />
-<div *ngIf="gameNotFound">
+<div *ngIf="isLoading" class="text-center">
+  <p>Cargando...</p>
+</div>
+
+<div *ngIf="error" class="text-center text-danger">
+  <p>{{error}}</p>
+</div>
+
+<div *ngIf="!isLoading && !error && gameNotFound">
   <p>Game not Found</p>
 </div>
 
-<div *ngIf="!gameNotFound && game" class="container">
+<div *ngIf="!isLoading && !error && game" class="container">
   <div class="row text-center section">
     <div class="col-12 col-md-12 col-lg-8">
       <h1 class="gameName">{{game.name}}</h1>
@@ -31,13 +39,26 @@
       <div class="row">
         <div class="col-md-6 mb-4" *ngFor="let image of game.images">
           <div class="image-container">
-            <img [src]="image"  class="img-fluid rounded gameImage">
+            <img [src]="image" class="img-fluid rounded gameImage">
           </div>
         </div>
       </div>
       <div *ngIf="!game?.images || game.images.length === 0" class="text-center my-5">
         <p>No images available</p>
       </div>
+    </div>
+
+    <!-- Sección de reseñas con depuración -->
+    <div class="row text-center section">
+      <h2 class="subTitles">Reviews</h2>
+      <p *ngIf="reviews.length === 0">No reviews available</p>
+      <app-user-review-component
+        *ngFor="let review of reviews"
+        [review]="review"
+        [game]="game"
+        [showGameInfo]="true"
+        [showUserInfo]="true">
+      </app-user-review-component>
     </div>
   </div>
   <div class="row text-center">

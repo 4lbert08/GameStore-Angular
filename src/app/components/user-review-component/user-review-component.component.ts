@@ -1,32 +1,45 @@
-import {Component, inject, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {Review} from '../../models/review';
-import {FirestoreService} from '../../services/firestore/firestore.service';
-import {Game} from '../../models/game';
-import {User} from '../../models/user';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Review } from '../../models/review';
+import { FirestoreService } from '../../services/firestore/firestore.service';
+import { Game } from '../../models/game';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-user-review-component',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './user-review-component.component.html',
-  styleUrl: './user-review-component.component.css'
+  styleUrls: ['./user-review-component.component.css']
 })
-export class UserReviewComponentComponent {
+export class UserReviewComponentComponent implements OnInit {
   @Input() public showGameInfo: boolean = true;
   @Input() public showUserInfo: boolean = true;
   @Input() public review!: Review;
+  @Input() public game!: Game; // Ahora lo pasamos desde el padre
+
   firestoreService = inject(FirestoreService);
-  game!: Game;
-  user!: User;
+  user: User | null = null;
+  isLoading: boolean = true;
+  error: string | null = null;
 
   ngOnInit(): void {
-    this.firestoreService.getGameById(this.review.gameId).subscribe(game => {
-      this.game = game;
-    });
+    this.loadUser();
+  }
 
-    this.firestoreService.getUserById(this.review.userId).subscribe(user => {
-      this.user = user;
-    });
+  private async loadUser(): Promise<void> {
+    try {
+      if (this.review.userId) {
+        const user$ = this.firestoreService.getUserById(this.review.userId);
+        this.user = await new Promise((resolve) => user$.subscribe(user => resolve(user)));
+      } else {
+        this.user = null; // O manejar el caso de userId nulo
+      }
+    } catch (err) {
+      this.error = 'Error loading user data';
+      console.error('Error loading user data', err);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }
