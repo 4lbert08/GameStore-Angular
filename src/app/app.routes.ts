@@ -4,7 +4,6 @@ import {GameShowcasePageComponent} from './pages/game-showcase-page/game-showcas
 import {AboutUsPageComponent} from './pages/about-us-page/about-us-page.component';
 import {ViewMoreSectionPageComponent} from './pages/view-more-section-page/view-more-section-page.component';
 import {AdvancedSearchPageComponent} from './pages/advanced-search-page/advanced-search-page.component';
-import {PruebaComponent} from './pages/prueba/prueba.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -12,7 +11,6 @@ export const routes: Routes = [
   { path: 'view-more-section-page', component: ViewMoreSectionPageComponent },
   { path: 'advanced-search-page', component: AdvancedSearchPageComponent },
   { path: 'gamePage/:id', component: GameShowcasePageComponent },
-  { path: 'prueba/:id', component: PruebaComponent },
   { path: '**', redirectTo: '' }
 ];
 

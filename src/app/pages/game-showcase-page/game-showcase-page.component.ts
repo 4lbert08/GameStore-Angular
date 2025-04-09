@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from '../../models/game';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -8,13 +8,14 @@ import { GameCardSectionComponent } from '../../components/game-card-section/gam
 import { MainHeaderComponent } from '../../components/main-header/main-header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { Review } from '../../models/review';
-import { UserReviewComponentComponent } from '../../components/user-review-component/user-review-component.component';
+import { UserReviewComponent } from '../../components/user-review-component/user-review-component.component';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game-showcase-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, GameCardSectionComponent, MainHeaderComponent, FooterComponent, UserReviewComponentComponent],
+  imports: [CommonModule, RouterLink, GameCardSectionComponent, MainHeaderComponent,
+    FooterComponent, UserReviewComponent],
   templateUrl: './game-showcase-page.component.html',
   styleUrls: ['./game-showcase-page.component.css']
 })
@@ -27,11 +28,12 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   error: string | null = null;
 
-  private subscriptions: Subscription[] = []; // Para manejar múltiples suscripciones
+  private subscriptions: Subscription[] = [];
 
   private firestoreService = inject(FirestoreService);
   private route = inject(ActivatedRoute);
   private sanitizer = inject(DomSanitizer);
+  private zone = inject(NgZone);
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -47,7 +49,6 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Limpiar todas las suscripciones para evitar memory leaks
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
@@ -58,51 +59,49 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
     this.reviews = [];
     this.recommendedGames = [];
 
-    const gameSub = this.firestoreService.getGameById(gameId).subscribe({
-      next: (game) => {
-        this.game = game;
-        this.gameNotFound = false;
+    this.zone.run(() => {
+      const gameSub = this.firestoreService.getGameById(gameId).subscribe({
+        next: (game) => {
+          this.game = game;
+          this.gameNotFound = false;
 
-        this.setTrailerUrl(game.trailer);
+          this.setTrailerUrl(game.trailer);
 
-        // Cargar juegos recomendados
-        const recommendedSub = this.firestoreService.getGames({
-          system: this.game.system,
-        }).subscribe({
-          next: (games) => {
-            this.recommendedGames = games;
-          },
-          error: (err) => console.error('Error loading recommended games', err)
-        });
-        this.subscriptions.push(recommendedSub);
-      },
-      error: (err) => {
-        console.error('Error loading game', err);
-        this.gameNotFound = true;
-        this.error = 'Game not found';
-      }
+          const recommendedSub = this.firestoreService.getGames({
+            system: this.game.system,
+          }).subscribe({
+            next: (games) => {
+              this.recommendedGames = games;
+            },
+            error: (err) => console.error('Error loading recommended games', err)
+          });
+          this.subscriptions.push(recommendedSub);
+        },
+        error: (err) => {
+          console.error('Error loading game', err);
+          this.gameNotFound = true;
+          this.error = 'Game not found';
+        }
+      });
+
+      const reviewsSub = this.firestoreService.getReviewsFromGame(gameId).subscribe({
+        next: (reviews) => {
+          this.reviews = reviews;
+        },
+        error: (err) => {
+          console.error('Error loading reviews', err);
+          this.error = this.error ? `${this.error}; Error loading reviews: ${err.message}` : `Error loading reviews: ${err.message}`;
+        }
+      });
+
+      this.subscriptions.push(gameSub, reviewsSub);
+
+      setTimeout(() => {
+        if (this.game) {
+          this.isLoading = false;
+        }
+      }, 500);
     });
-
-    // Cargar reseñas (separada para manejar errores independientemente)
-    const reviewsSub = this.firestoreService.getReviewsFromGame(gameId).subscribe({
-      next: (reviews) => {
-        console.log('Reviews loaded:', reviews); // Depuración
-        this.reviews = reviews;
-      },
-      error: (err) => {
-        console.error('Error loading reviews', err);
-        this.error = this.error ? `${this.error}; Error loading reviews: ${err.message}` : `Error loading reviews: ${err.message}`;
-      }
-    });
-
-    this.subscriptions.push(gameSub, reviewsSub);
-
-    // Marcar como no cargando una vez que todo esté listo (o al menos el juego)
-    setTimeout(() => {
-      if (this.game) {
-        this.isLoading = false;
-      }
-    }, 1000); // Ajusta el tiempo si es necesario, o usa un observable más complejo
   }
 
   private setTrailerUrl(trailer: string): void {

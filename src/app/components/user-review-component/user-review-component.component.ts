@@ -12,11 +12,11 @@ import { User } from '../../models/user';
   templateUrl: './user-review-component.component.html',
   styleUrls: ['./user-review-component.component.css']
 })
-export class UserReviewComponentComponent implements OnInit {
+export class UserReviewComponent implements OnInit {
   @Input() public showGameInfo: boolean = true;
   @Input() public showUserInfo: boolean = true;
   @Input() public review!: Review;
-  @Input() public game!: Game; // Ahora lo pasamos desde el padre
+  @Input() public game!: Game;
 
   firestoreService = inject(FirestoreService);
   user: User | null = null;
@@ -33,7 +33,7 @@ export class UserReviewComponentComponent implements OnInit {
         const user$ = this.firestoreService.getUserById(this.review.userId);
         this.user = await new Promise((resolve) => user$.subscribe(user => resolve(user)));
       } else {
-        this.user = null; // O manejar el caso de userId nulo
+        this.user = null;
       }
     } catch (err) {
       this.error = 'Error loading user data';
