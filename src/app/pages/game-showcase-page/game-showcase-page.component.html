@@ -1,66 +1,110 @@
+<!-- game-showcase-page.component.html -->
 <app-main-header />
-<div *ngIf="isLoading" class="text-center">
+
+<!-- Loader -->
+<div *ngIf="isLoading" class="container py-5 text-center">
   <div class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
 
-<div *ngIf="error" class="text-center text-danger">
-  <p>{{error}}</p>
+<!-- Error Display -->
+<div *ngIf="error" class="container py-5 text-center">
+  <div class="alert alert-danger">
+    <p>{{error}}</p>
+  </div>
 </div>
 
-<div *ngIf="!isLoading && !error && gameNotFound">
-  <p>Game not Found</p>
+<!-- Game Not Found -->
+<div *ngIf="!isLoading && !error && gameNotFound" class="container py-5 text-center">
+  <div class="alert alert-warning">
+    <p>Game not Found</p>
+  </div>
 </div>
 
+<!-- Game Content -->
 <div *ngIf="!isLoading && !error && game" class="container">
-  <div class="row text-center section">
-    <div class="col-12 col-md-12 col-lg-8">
-      <h1 class="gameName">{{game.name}}</h1>
-      <img src="{{game.gameCover}}" class="img-fluid gameCover" alt="{{game.name}} cover">
+
+  <!-- Game Header Section -->
+  <div class="row text-center mb-5">
+    <!-- GameCover-->
+    <div class="col-12 col-lg-8">
+      <h1 class="gameName mb-3">{{game.name}}</h1>
+      <img [src]="game.gameCover" class="img-fluid gameCover" [alt]="game.name + ' cover'">
     </div>
-    <div class="col-12 col-md-12 col-lg-4" style="align-content: center">
-      <div class="priceContainer">
-        <img class="logoImg" src="/imgs/logo.png" routerLink="" alt="Logo">
-        <p class="price">{{game.amount}} {{game.currency}}</p>
-        <button type="button" class="cartButton" onclick="">add cart</button>
+
+    <!-- Price container -->
+    <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center">
+      <div class="priceContainer p-3 text-center">
+        <img class="logoImg mb-2" src="/imgs/logo.png" alt="Logo" style="width: 60px; height: auto;">
+        <p class="price mb-3">{{game.amount}} {{game.currency}}</p>
+        <button type="button" class="btn btn-primary w-100 cartButton">Add to cart</button>
       </div>
     </div>
-    <div class="col-12 text-start section">
+
+  </div>
+
+  <!-- Description Section -->
+  <div class="row mb-5">
+    <div class="col-12 text-start">
       <h2 class="subTitles">Description</h2>
       <p class="text">{{game.description}}</p>
     </div>
-    <div class="col-12 text-start section">
-      <h2 class="subTitles">Trailer</h2>
-      <div class="embed-responsive embed-responsive-16by9" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-        <iframe class="embed-responsive-item" [src]="sanitizedTrailerUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+
+  <!-- Trailer Section -->
+  <div class="row mb-5">
+    <div class="col-12 text-start">
+      <h2 class="subTitles mb-3">Trailer</h2>
+      <div class="ratio ratio-16x9">
+        <iframe [src]="sanitizedTrailerUrl"
+                title="Game Trailer"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
       </div>
     </div>
-    <div class="container-fluid section">
-      <h2 class="subTitles" style="justify-self: start">Images</h2>
-      <div class="row">
+  </div>
+
+  <!-- Images Section -->
+  <div class="row mb-5">
+    <div class="col-12">
+      <h2 class="subTitles mb-3">Images</h2>
+
+      <div *ngIf="game?.images?.length" class="row">
         <div class="col-md-6 mb-4" *ngFor="let image of game.images">
           <div class="image-container">
-            <img [src]="image" class="img-fluid rounded gameImage">
+            <img [src]="image" class="img-fluid rounded gameImage" [alt]="game.name + ' screenshot'">
           </div>
         </div>
       </div>
-      <div *ngIf="!game?.images || game.images.length === 0" class="text-center my-5">
-        <p>No images available</p>
+
+      <div *ngIf="!game?.images?.length" class="text-center my-4">
+        <p class="text-light">No images available</p>
       </div>
     </div>
-
-  </div>
-  <div class="row text-center">
-    <app-game-card-section title="Recommended" [games]="recommendedGames"></app-game-card-section>
   </div>
 
-  <div class="row text-start">
-    <h2 class="subTitles">Reviews</h2>
-  </div>
-  <div class="row text-center">
-    <p *ngIf="reviews.length === 0" style="color: white">No reviews available</p>
-    <app-review-with-user-info *ngFor="let review of reviews" [review]="review" style="align-items: center"></app-review-with-user-info>
+  <!-- Recommended Games Section -->
+  <app-game-card-section title="Recommended" [games]="recommendedGames"></app-game-card-section>
+
+  <!-- Reviews Section -->
+  <div class="row mb-5">
+    <div class="col-12">
+      <h2 class="subTitles mb-3">Reviews</h2>
+
+      <p *ngIf="reviews.length === 0" class="text-light text-center">No reviews available</p>
+
+      <div class="reviews-container">
+        <app-review-with-user-info
+          *ngFor="let review of reviews"
+          [review]="review"
+          class="mb-3">
+        </app-review-with-user-info>
+      </div>
+    </div>
   </div>
 </div>
+
 <app-footer />

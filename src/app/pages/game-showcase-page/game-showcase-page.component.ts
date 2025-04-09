@@ -53,11 +53,6 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
   }
 
   private loadGameData(gameId: string): void {
-    this.isLoading = true;
-    this.error = null;
-    this.game = null;
-    this.reviews = [];
-    this.recommendedGames = [];
 
     this.zone.run(() => {
       const gameSub = this.firestoreService.getGameById(gameId).subscribe({
