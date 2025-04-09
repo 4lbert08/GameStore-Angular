@@ -2,26 +2,21 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Review } from '../../models/review';
 import { FirestoreService } from '../../services/firestore/firestore.service';
-import { Game } from '../../models/game';
 import { User } from '../../models/user';
 
 @Component({
-  selector: 'app-user-review-component',
+  selector: 'app-review-with-user-info',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './user-review-component.component.html',
-  styleUrls: ['./user-review-component.component.css']
+  templateUrl: './review-with-user-info.component.html',
+  styleUrl: './review-with-user-info.component.css'
 })
-export class UserReviewComponent implements OnInit {
-  @Input() public showGameInfo: boolean = true;
-  @Input() public showUserInfo: boolean = true;
+export class ReviewWithUserInfoComponent {
   @Input() public review!: Review;
-  @Input() public game!: Game;
-
-  firestoreService = inject(FirestoreService);
   user: User | null = null;
   isLoading: boolean = true;
   error: string | null = null;
+  firestoreService: FirestoreService = inject(FirestoreService);
 
   ngOnInit(): void {
     this.loadUser();

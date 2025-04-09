@@ -55,16 +55,12 @@
     <app-game-card-section title="Recommended" [games]="recommendedGames"></app-game-card-section>
   </div>
 
-  <div class="row text-center section">
+  <div class="row text-start">
     <h2 class="subTitles">Reviews</h2>
+  </div>
+  <div class="row text-center">
     <p *ngIf="reviews.length === 0" style="color: white">No reviews available</p>
-    <app-user-review-component
-      *ngFor="let review of reviews"
-      [review]="review"
-      [game]="game"
-      [showGameInfo]="false"
-      [showUserInfo]="true">
-    </app-user-review-component>
+    <app-review-with-user-info *ngFor="let review of reviews" [review]="review" style="align-items: center"></app-review-with-user-info>
   </div>
 </div>
 <app-footer />

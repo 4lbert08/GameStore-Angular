@@ -1,17 +1,12 @@
 <div class="row userReview align-items-center" *ngIf="!isLoading && !error">
-  <div class="col-12 col-sm-4 text-center" *ngIf="showGameInfo && game">
+  <div class="col-12 col-sm-4 text-center" *ngIf="game">
     <a href="">
       <img class="gameCover img-fluid" src="{{game.gameCover}}" alt="{{game.name}} cover">
     </a>
     <p class="gameName">{{game.name}}</p>
   </div>
 
-  <div class="col-12 col-sm-3 text-center" *ngIf="showUserInfo && user">
-    <img class="userAvatar img-fluid rounded-circle" src="{{user.avatar}}" alt="{{user.nickname}} avatar">
-    <p class="userName">{{user.nickname}}</p>
-  </div>
-
-  <div class="col-12" [style.flex]="(showGameInfo ? 0.4 : 1) + (showUserInfo ? 0.3 : 1)">
+  <div class="col-12">
     <p class="review">{{review.review}}</p>
   </div>
 </div>

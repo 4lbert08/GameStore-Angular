@@ -8,14 +8,14 @@ import { GameCardSectionComponent } from '../../components/game-card-section/gam
 import { MainHeaderComponent } from '../../components/main-header/main-header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { Review } from '../../models/review';
-import { UserReviewComponent } from '../../components/user-review-component/user-review-component.component';
+import { ReviewWithUserInfoComponent} from '../../components/review-with-user-info/review-with-user-info.component';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game-showcase-page',
   standalone: true,
   imports: [CommonModule, RouterLink, GameCardSectionComponent, MainHeaderComponent,
-    FooterComponent, UserReviewComponent],
+    FooterComponent, ReviewWithUserInfoComponent],
   templateUrl: './game-showcase-page.component.html',
   styleUrls: ['./game-showcase-page.component.css']
 })
@@ -76,33 +76,35 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
             error: (err) => console.error('Error loading recommended games', err)
           });
           this.subscriptions.push(recommendedSub);
+
+          this.isLoading = false;
         },
         error: (err) => {
           console.error('Error loading game', err);
           this.gameNotFound = true;
           this.error = 'Game not found';
+          this.isLoading = false;
         }
       });
 
       const reviewsSub = this.firestoreService.getReviewsFromGame(gameId).subscribe({
         next: (reviews) => {
-          this.reviews = reviews;
+          this.zone.run(() => {
+            this.reviews = reviews;
+          });
+          this.isLoading = false;
         },
         error: (err) => {
           console.error('Error loading reviews', err);
           this.error = this.error ? `${this.error}; Error loading reviews: ${err.message}` : `Error loading reviews: ${err.message}`;
+          this.isLoading = false;
         }
       });
 
       this.subscriptions.push(gameSub, reviewsSub);
-
-      setTimeout(() => {
-        if (this.game) {
-          this.isLoading = false;
-        }
-      }, 500);
     });
   }
+
 
   private setTrailerUrl(trailer: string): void {
     this.sanitizedTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(trailer) as string;
