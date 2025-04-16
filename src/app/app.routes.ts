@@ -7,13 +7,12 @@ import {AdvancedSearchPageComponent} from './pages/advanced-search-page/advanced
 import {PruebaComponent} from './pages/prueba/prueba.component';
 
 export const routes: Routes = [
-  { path: '', component: LandingPageComponent },
   { path: 'about-us', component: AboutUsPageComponent },
   { path: 'view-more-section-page', component: ViewMoreSectionPageComponent },
   { path: 'advanced-search-page', component: AdvancedSearchPageComponent },
   { path: 'gamePage/:id', component: GameShowcasePageComponent },
   { path: 'prueba', component: PruebaComponent },
-
+  { path: '', component: LandingPageComponent },
   { path: '**', redirectTo: '' }
 ];
 
