@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {Game} from '../../models/game';
-import {FirestoreService} from '../firestore/firestore.service';
+import { Game } from '../../models/game';
+import { FirestoreService } from '../firestore/firestore.service';
 
 export interface SearchFilters {
   searchTerm?: string;
@@ -19,7 +19,15 @@ export class GameSearchService {
   private gamesSubject = new BehaviorSubject<Game[]>([]);
   private filtersSubject = new BehaviorSubject<SearchFilters>({});
 
-  constructor(private firestoreService: FirestoreService) {}
+  constructor(private firestoreService: FirestoreService) {
+    const storedFilters = localStorage.getItem('searchFilters');
+    if (storedFilters) {
+      const parsedFilters = JSON.parse(storedFilters);
+      this.applyFilters(parsedFilters);
+    } else {
+      this.loadAllGames();
+    }
+  }
 
   getGames(): Observable<Game[]> {
     return this.gamesSubject.asObservable();
@@ -29,31 +37,31 @@ export class GameSearchService {
     return this.filtersSubject.asObservable();
   }
 
-  loadAllGames() {
+  loadAllGames(): void {
     this.firestoreService.getGames().subscribe(games => {
       this.gamesSubject.next(games);
       this.filtersSubject.next({});
+      localStorage.removeItem('searchFilters');
     });
   }
 
-  loadGamesBySearchTerm(searchTerm: string) {
+  loadGamesBySearchTerm(searchTerm: string): void {
     const filters: SearchFilters = { searchTerm };
-    this.firestoreService.getGames(filters).subscribe(games => {
-      this.gamesSubject.next(games);
-      this.filtersSubject.next(filters);
-    });
+    this.applyFilters(filters);
   }
 
-  applyFilters(filters: SearchFilters) {
+  applyFilters(filters: SearchFilters): void {
     const currentFilters = { ...this.filtersSubject.value, ...filters };
     this.filtersSubject.next(currentFilters);
+    localStorage.setItem('searchFilters', JSON.stringify(currentFilters));
     this.firestoreService.getGames(currentFilters).subscribe(games => {
       this.gamesSubject.next(games);
     });
   }
 
-  clearFilters() {
+  clearFilters(): void {
     this.filtersSubject.next({});
+    localStorage.removeItem('searchFilters');
     this.loadAllGames();
   }
 }

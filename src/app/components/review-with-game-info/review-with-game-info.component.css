@@ -1,0 +1,21 @@
+
+.gameName, .review {
+  color: white;
+}
+
+.userReview {
+  background-color: #282727;
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  border-bottom: 0.125rem solid black;
+}
+
+.gameCover {
+  border-radius: 1.25rem;
+  height: 12rem;
+  width: 10rem;
+  object-fit: cover;
+}

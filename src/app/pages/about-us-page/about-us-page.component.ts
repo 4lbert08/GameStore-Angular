@@ -3,6 +3,7 @@ import { DeveloperCardComponent } from '../../components/developer-card/develope
 import { NgForOf } from '@angular/common';
 import { Developer } from '../../models/developer';
 import { FirestoreService } from '../../services/firestore/firestore.service';
+import {MainHeaderComponent} from '../../components/main-header/main-header.component';
 
 @Component({
   selector: 'app-about-us-page',
@@ -10,6 +11,7 @@ import { FirestoreService } from '../../services/firestore/firestore.service';
   imports: [
     DeveloperCardComponent,
     NgForOf,
+    MainHeaderComponent,
   ],
   templateUrl: './about-us-page.component.html',
   styleUrl: './about-us-page.component.css'

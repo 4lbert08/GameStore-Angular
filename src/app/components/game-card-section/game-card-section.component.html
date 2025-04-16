@@ -6,7 +6,7 @@
 
   <div class="gallery">
     <app-game-card
-      *ngFor="let game of games.slice(0, 5); let i = index"
+      *ngFor="let game of games?.slice(0, 5); let i = index"
       [gameId]="game.id"
       [gameName]="game.name"
       [gameCover]="game.gameCover"

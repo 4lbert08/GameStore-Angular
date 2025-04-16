@@ -1,0 +1,20 @@
+<div class="row userReview" *ngIf="!isLoading && !error">
+
+  <div class="col-12 col-sm-3 text-center" *ngIf="user">
+    <img class="userAvatar img-fluid rounded-circle" src="{{user.avatar}}" alt="{{user.nickname}} avatar">
+    <p class="userName">{{user.nickname}}</p>
+  </div>
+
+  <div class="col-12 col-sm-9">
+    <p class="review">{{review.review}}</p>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="text-center">
+  <p>Loading reviews...</p>
+</div>
+
+<div *ngIf="error" class="text-center text-danger">
+  <p>{{error}}</p>
+</div>
+

@@ -19,13 +19,15 @@
 .priceContainer{
   justify-self: center;
   width: fit-content;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1vw;
-  border: 5px solid black;
-  background: #771777;
+  border: 3px solid black;
+  border-radius: 15%;
+  background: linear-gradient(to right, #7209b7, #3f37c9);
   padding: 1vw 2vw;
   margin: 1vw;
 }

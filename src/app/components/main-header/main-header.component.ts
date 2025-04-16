@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
-import {GameSearchService} from '../../services/game-search/game-search.service';
-import {first} from 'rxjs';
-import {FormsModule} from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { GameSearchService } from '../../services/game-search/game-search.service';
+import { first } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-main-header',
   standalone: true,
-  imports: [
-    RouterLink,
-    FormsModule
-  ],
+  imports: [RouterLink, FormsModule],
   templateUrl: './main-header.component.html',
   styleUrl: './main-header.component.css'
 })
@@ -25,19 +22,13 @@ export class MainHeaderComponent {
 
   goToAdvancedSearch() {
     this.gameSearchService.loadAllGames();
-    this.gameSearchService.getGames().pipe(first()).subscribe(games => {
-      console.log('Juegos cargados antes de navegar (todos):', games);
-      this.router.navigate(['advanced-search-page']);
-    });
+    this.router.navigate(['advanced-search-page']);
   }
 
   search() {
     if (this.searchQuery) {
-      this.gameSearchService.loadGamesBySearchTerm(this.searchQuery);
-      this.gameSearchService.getGames().pipe(first()).subscribe(games => {
-        console.log('Juegos cargados antes de navegar (filtrados):', games);
-        this.router.navigate(['advanced-search-page']);
-      });
+      this.gameSearchService.applyFilters({ searchTerm: this.searchQuery });
+      this.router.navigate(['advanced-search-page']);
     } else {
       this.goToAdvancedSearch();
     }

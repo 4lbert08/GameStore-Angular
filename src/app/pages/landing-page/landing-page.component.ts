@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FirestoreService } from '../../services/firestore/firestore.service';
 import { Game } from '../../models/game';
 import { Subscription } from 'rxjs';
+import {FooterComponent} from "../../components/footer/footer.component";
+import {MainHeaderComponent} from '../../components/main-header/main-header.component';
 
 interface GameSection {
   title: string;
@@ -16,6 +18,8 @@ interface GameSection {
   imports: [
     GameCardSectionComponent,
     CommonModule,
+    FooterComponent,
+    MainHeaderComponent,
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
