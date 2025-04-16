@@ -1,0 +1,55 @@
+*{
+  color:white;
+
+}
+
+
+.userConfiguration__image {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 20rem;
+  margin: 0 0 2rem 0;
+}
+
+.userContainer{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+
+.userConfiguration__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  background-color: #6119b4;
+  padding: 4rem;
+  border-radius: 4rem;
+}
+
+.userConfiguration__form-input {
+  width: 100%;
+  max-width: 27rem;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  border: #fff solid 1px;
+  background-color: #6119b4;
+}
+
+.userConfiguration__ApplyButton {
+  margin-top: 5%;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  background: #1E1EBF;
+  border: white solid 2px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  place-self: center;
+}
+

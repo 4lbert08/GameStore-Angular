@@ -1,0 +1,60 @@
+<app-main-header/>
+<app-user-nav-bar/>
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-xl-6 ">
+    <div class="container-fluid userContainer">
+    <img class="userConfiguration__image" src="imgs/default-profile.png">
+    <button type="button" class="btn btn-primary">Cerrar sesion</button>
+    </div>
+  </div>
+
+  <div class="col-xl-6 cont ">
+    <form class="userConfiguration__form">
+      <div>
+        <label for="nickname">Cambiar el nickname</label>
+        <input class="userConfiguration__form-input" type="text" name="nickname" id="nickname" maxlength="30">
+      </div>
+
+      <div>
+        <label for="birthday">Cambiar el cumpleaños</label>
+        <input class="userConfiguration__form-input" type="date" name="birthday" id="birthday">
+      </div>
+
+
+      <div>
+        <label for="region">Cambiar de región</label>
+        <select class="userConfiguration__form-input" id="region" name="region">
+          <option value="EU">EU</option>
+          <option value="NA">NA</option>
+          <option value="LATAM">LATAM</option>
+          <option value="AFR">AFR</option>
+          <option value="ASIA">ASIA</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="language">Cambiar de idioma</label>
+        <select class="userConfiguration__form-input" id="language" name="language">
+          <option value="Español">Español</option>
+          <option value="English">English</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="profilePictureInput">Foto de perfil (Opcional)</label>
+        <input class="userConfiguration__form-input" type="file" name="profilePicture" id="profilePictureInput">
+      </div>
+
+      <div >
+        <input class="userConfiguration__ApplyButton" type="submit" value="Aplicar" id="save">
+      </div>
+    </form>
+
+  </div>
+</div>
+</div>
+
+
+<app-footer/>

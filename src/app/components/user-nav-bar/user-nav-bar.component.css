@@ -1,12 +1,11 @@
 .userNavBar{
   color:white;
-
   width: 40rem;
   height: 5rem;
   background: linear-gradient(to right, #f30202, #0101fd);
   border-radius: 3.125rem;
   display: flex;
-  align-items: center;
+  place-self: center;
   margin: 5rem;
 }
 
@@ -16,6 +15,8 @@
   width: 33%;
   height: 3rem;
   margin: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
   border-radius: 3.125rem;
   display: flex;
   align-items: center;
