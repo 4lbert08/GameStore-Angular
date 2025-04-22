@@ -1,26 +1,30 @@
-.userNavBar{
-  color:white;
-  width: 40rem;
+body {
+  font-family: "Genos", sans-serif;
+}
+
+.userMenuButton {
+  width: 33%;
   height: 5rem;
   background: linear-gradient(to right, #f30202, #0101fd);
   border-radius: 3.125rem;
   display: flex;
   place-self: center;
+  place-content: center;
+  place-items: center;
   margin: 5rem;
 }
 
-
 .userMenuButton__buttons {
   background-color: #EBEBEF;
-  width: 33%;
+  width: 40rem;
   height: 3rem;
   margin: 1rem;
-  font-size: 1.1rem;
-  font-weight: bold;
+  text-decoration: none;
   border-radius: 3.125rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  place-items: center;
+  place-content: center;
+  place-self: center;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -60,7 +64,7 @@
   }
   .userMenuButton__buttons {
     width: 50%;
-    max-width: 7rem;
+    max-width: 20rem;
     height: 2rem;
     font-size: 0.9rem;
     margin: 0.5rem 0;
