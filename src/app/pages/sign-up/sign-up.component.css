@@ -1,0 +1,125 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #272727;
+  padding: 3rem;
+}
+
+h1{
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+label, a {
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 1.2rem;
+}
+
+input {
+  width: 90%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #FFFFFF;
+  border: 0.1rem solid #FFFFFF;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: #FFFFFF;
+  font-weight: lighter;
+}
+
+.signUp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  place-self: center;
+}
+
+.signUp__box {
+  position: relative;
+  width: 100%;
+  padding: 5rem 2.5rem;
+  background: none;
+}
+
+.signUp__box-input {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+#NacionalityField {
+  width: 40%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #FFFFFF;
+  border: 0.1rem solid #FFFFFF;
+  font-size: 1rem;
+}
+
+#NacionalityField option {
+  color: black;
+}
+
+.signUp__box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #6119b4;
+  filter: blur(0.6rem);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.signUp__logo {
+  align-self: center;
+  justify-self: center;
+  margin: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.signUp__logo:hover {
+  transform: scale(1.05);
+}
+
+.signUp__logo-img {
+  width: 9.375rem;
+  background: transparent;
+  border-radius: 2.8rem;
+}
+
+.signUp__submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.passwordContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.RegisterButton {
+  scale: 1.5;
+  margin-top: 5%;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  padding: 0.625rem;
+  background: #1E1EBF;
+  border: 0.125rem solid #FFFFFF;
+  border-radius: 0.5rem;
+}

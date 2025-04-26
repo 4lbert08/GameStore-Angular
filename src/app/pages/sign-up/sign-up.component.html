@@ -1,0 +1,62 @@
+
+<div class="signUp container-fluid row">
+  <div class="mx-auto col-10 col-md-9 col-xl-6 m-0">
+    <h1 style="text-align: center">Regístrate</h1>
+
+    <div class="signUp__box">
+      <form id="signUpForm">
+        <div class="signUp__box-input">
+          <label for="UsernameField">Nombre del usuario</label>
+          <input type="text" id="UsernameField" name="Username" placeholder="Username" required minlength="3" maxlength="20">
+        </div>
+
+        <div class="signUp__box-input">
+          <label for="EmailField">Email del usuario</label>
+          <input type="email" id="EmailField" name="Email" placeholder="Email address" required>
+        </div>
+
+        <div class="signUp__box-input">
+          <label for="PasswordField">Contraseña del usuario</label>
+          <div class="passwordContainer">
+            <input type="password" id="PasswordField" name="Password" placeholder="Password" required>
+            <img id="privacyToggler" src="/imgs/privacyEnabled.png" width="32" height="32" alt="">
+          </div>
+        </div>
+
+        <div class="signUp__box-input">
+          <label for="PasswordRepeatField">Repite la contraseña del usuario</label>
+          <div class="passwordContainer">
+            <input type="password" id="PasswordRepeatField" name="PasswordRepeat" placeholder="Password again" required>
+            <img id="privacyTogglerRepeat" src="/imgs/privacyEnabled.png" width="32" height="32" alt="">
+          </div>
+        </div>
+
+        <div class="signUp__box-input">
+          <label for="BirthdayField">Cumpleaños del usuario</label>
+          <input type="date" id="BirthdayField" name="Birthday" placeholder="Birthday" required>
+        </div>
+
+        <div class="signUp__box-input">
+          <label for="NacionalityField">Nacionalidad del usuario</label>
+          <select id="NacionalityField" name="Nacionality">
+            <option value="EU">EU</option>
+            <option value="NA">NA</option>
+            <option value="LATAM">LATAM</option>
+            <option value="AFR">AFR</option>
+            <option value="ASIA">ASIA</option>
+          </select>
+        </div>
+
+        <div class="signUp__logo">
+          <a href="./index.html">
+            <img class="signUp__logo-img" src="/imgs/logo.png" alt="Logo">
+          </a>
+        </div>
+
+        <div class="signUp__submit">
+          <button class="RegisterButton" type="submit">Sign up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

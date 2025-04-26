@@ -7,6 +7,7 @@ import {AdvancedSearchPageComponent} from './pages/advanced-search-page/advanced
 import {PruebaComponent} from './pages/prueba/prueba.component';
 import {UserSettingsComponent} from './pages/user-settings/user-settings.component';
 import {LoginComponent} from './pages/login/login.component';
+import {SignUpComponent} from './pages/sign-up/sign-up.component';
 
 export const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'gamePage/:id', component: GameShowcasePageComponent },
   { path: 'userSettings', component: UserSettingsComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'signUp', component: SignUpComponent},
   { path: 'prueba', component: PruebaComponent },
   { path: '', component: LandingPageComponent },
   { path: '**', redirectTo: '' }
