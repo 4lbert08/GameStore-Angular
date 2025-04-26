@@ -6,6 +6,7 @@ import {ViewMoreSectionPageComponent} from './pages/view-more-section-page/view-
 import {AdvancedSearchPageComponent} from './pages/advanced-search-page/advanced-search-page.component';
 import {PruebaComponent} from './pages/prueba/prueba.component';
 import {UserSettingsComponent} from './pages/user-settings/user-settings.component';
+import {LoginComponent} from './pages/login/login.component';
 
 export const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'advanced-search-page', component: AdvancedSearchPageComponent },
   { path: 'gamePage/:id', component: GameShowcasePageComponent },
   { path: 'userSettings', component: UserSettingsComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'prueba', component: PruebaComponent },
   { path: '', component: LandingPageComponent },
   { path: '**', redirectTo: '' }

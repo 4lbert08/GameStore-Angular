@@ -1,0 +1,38 @@
+
+<div class="Top container-fluid">
+  <div class="Top__Logo ">
+        <img routerLink="" style="cursor: pointer" class="Top__Logo__LogoImg"
+             src="/imgs/logo.png" alt="Logo">
+  </div>
+</div>
+
+<div class="loginDiv container-fluid  align-items-center  ">
+  <div class="row">
+    <div class="col-10 col-md-10 col-xl-6 mx-auto">
+      <h1 >Iniciar Sesión</h1>
+
+      <div class="loginDiv__LoginBox">
+        <form id="loginDiv__Form">
+          <div class="PartDiv">
+            <label for="EmailField">Email del usuario</label>
+            <input type="email" id="EmailField" name="Email" placeholder="Email address" required>
+          </div>
+
+          <div class="loginDiv__PartDiv">
+            <label for="PasswordField">Contraseña del usuario</label>
+            <div class="passwordContainer">
+              <input class="form-control" type="password" id="PasswordField" placeholder="Password" required>
+              <img id="privacyToggler" src="/imgs/privacyEnabled.png" width="32" height="32" alt="">
+            </div>
+            <a routerLink="">¿Has olvidado tu contraseña?</a>
+          </div>
+
+          <div class="loginDiv__submit">
+            <a routerLink=""><b>Registrarse</b></a>
+            <button class="LoginButton btn mg-0" type="submit">Log in</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+</div>
