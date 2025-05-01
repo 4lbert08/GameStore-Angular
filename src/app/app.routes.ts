@@ -8,6 +8,7 @@ import {PruebaComponent} from './pages/prueba/prueba.component';
 import {UserSettingsComponent} from './pages/user-settings/user-settings.component';
 import {LoginComponent} from './pages/login/login.component';
 import {SignUpComponent} from './pages/sign-up/sign-up.component';
+import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'userSettings', component: UserSettingsComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signUp', component: SignUpComponent},
+  { path: 'forgotPassword', component:ForgotPasswordComponent},
   { path: 'prueba', component: PruebaComponent },
   { path: '', component: LandingPageComponent },
   { path: '**', redirectTo: '' }
