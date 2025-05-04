@@ -7,13 +7,13 @@ import {
   Firestore,
   query,
   where,
-  QueryConstraint
+  QueryConstraint, setDoc
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Game } from '../../models/game';
 import { Developer } from '../../models/developer';
 import {Review} from '../../models/review';
-import {User} from '../../models/user';
+import {UserData} from '../../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -70,9 +70,9 @@ export class FirestoreService {
     return collectionData(developerRef, { idField: 'id' }) as Observable<Developer[]>;
   }
 
-  getUserById(userId: string): Observable<User> {
+  getUserById(userId: string): Observable<UserData> {
     const userDocRef = doc(this.firestore, `users/${userId}`);
-    return docData(userDocRef, { idField: 'id' }) as Observable<User>;
+    return docData(userDocRef, { idField: 'id' }) as Observable<UserData>;
   }
 
   getReviewsFromGame(gameId: string): Observable<Review[]> {
@@ -87,5 +87,15 @@ export class FirestoreService {
       query(collection(this.firestore, 'reviews'), where('userId', '==', userId)),
       { idField: 'id' }
     ) as Observable<Review[]>;
+  }
+
+  addUser(user: UserData, id: string){
+    const userRef = doc(this.firestore, `users/${id}`);
+    return setDoc(userRef, user);
+  }
+
+  loadUser(userId: string) {
+    const userDocRef = doc(this.firestore, `users/${userId}`);
+    return docData(userDocRef, { idField: 'id' }) as Observable<UserData>;
   }
 }
