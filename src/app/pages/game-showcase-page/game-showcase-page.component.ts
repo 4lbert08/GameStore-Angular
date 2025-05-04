@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from '../../models/game';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { FirestoreService } from '../../services/firestore/firestore.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GameCardSectionComponent } from '../../components/game-card-section/game-card-section.component';
@@ -10,17 +10,22 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { Review } from '../../models/review';
 import { ReviewWithUserInfoComponent} from '../../components/review-with-user-info/review-with-user-info.component';
 import { Subscription } from 'rxjs';
+import {User} from 'firebase/auth';
+import {AuthService} from '../../services/auth/auth.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-game-showcase-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, GameCardSectionComponent, MainHeaderComponent,
-    FooterComponent, ReviewWithUserInfoComponent],
+  imports: [CommonModule, GameCardSectionComponent, MainHeaderComponent,
+    FooterComponent, ReviewWithUserInfoComponent, FormsModule],
   templateUrl: './game-showcase-page.component.html',
   styleUrls: ['./game-showcase-page.component.css']
 })
 export class GameShowcasePageComponent implements OnInit, OnDestroy {
+  user: User | null = null;
   game: Game | null = null;
+  review: string = "";
   recommendedGames: Game[] = [];
   reviews: Review[] = [];
   gameNotFound: boolean = false;
@@ -34,11 +39,18 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private sanitizer = inject(DomSanitizer);
   private zone = inject(NgZone);
+  private authService: AuthService = inject(AuthService);
 
   ngOnInit(): void {
+
+    this.authService.getCurrentUser().subscribe(
+      user => {
+        this.user = user;
+      }
+    )
+
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
-
       if (id) {
         this.loadGameData(id);
       } else {
@@ -100,8 +112,18 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
     });
   }
 
+  async addReview(){
+    const userReview: Review = {
+      userId: this.user?.uid,
+      gameId: this.game?.id,
+      review: this.review
+    }
+    await this.firestoreService.addReview(userReview);
+    this.review = "";
+  }
 
   private setTrailerUrl(trailer: string): void {
     this.sanitizedTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(trailer) as string;
   }
+
 }

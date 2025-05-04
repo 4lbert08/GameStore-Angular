@@ -92,6 +92,15 @@
   <!-- Reviews Section -->
   <div class="row mb-5">
     <div class="col-12">
+      <h2 class="subTitles mb-3">Add Review</h2>
+      <div class="input-group">
+        <textarea class="form-control" aria-label="Description" [(ngModel)]="review"></textarea>
+        <span class="input-group-text">
+          <button id="ReviewButton" type="submit" aria-label="Enviar reseña" (click)="addReview()">add</button>
+        </span>
+      </div>
+    </div>
+    <div class="col-12">
       <h2 class="subTitles mb-3">Reviews</h2>
 
       <p *ngIf="reviews.length === 0" class="text-light text-center">No reviews available</p>

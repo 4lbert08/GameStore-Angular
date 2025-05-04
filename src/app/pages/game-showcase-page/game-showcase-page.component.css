@@ -1,5 +1,3 @@
-
-
 .gameName{
   justify-self: start;
   color: #ffffff;
@@ -95,3 +93,11 @@
   height: auto;
   transition: transform 0.3s ease;
  }
+
+#ReviewButton {
+  color: white;
+  background-color: #441991;
+  padding: 1vw;
+  border: 2px solid white;
+  border-radius: 50%;
+}
