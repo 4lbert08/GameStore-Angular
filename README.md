@@ -78,7 +78,7 @@ GameStore-Firestore-Database/
 
 <pre>
 GameStore-Storage/
-├── profiles/            # Imágenes de perfil de cada usuario
+├── profilePictures/            # Imágenes de perfil de cada usuario
 </pre>
 
 ## 📄 Páginas (Templates) del proyecto
