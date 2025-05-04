@@ -82,7 +82,7 @@ export class FirestoreService {
     ) as Observable<Review[]>;
   }
 
-  getReviewsFromUser(userId: string): Observable<Review[]> {
+  getReviewsFromUser(userId: string | undefined): Observable<Review[]> {
     return collectionData(
       query(collection(this.firestore, 'reviews'), where('userId', '==', userId)),
       { idField: 'id' }

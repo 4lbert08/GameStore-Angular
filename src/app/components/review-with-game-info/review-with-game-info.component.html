@@ -1,12 +1,10 @@
 <div class="row userReview align-items-center" *ngIf="!isLoading && !error">
   <div class="col-12 col-sm-4 text-center" *ngIf="game">
-    <a href="">
-      <img class="gameCover img-fluid" src="{{game.gameCover}}" alt="{{game.name}} cover">
-    </a>
+    <img class="gameCover img-fluid" src="{{game.gameCover}}" alt="{{game.name}} cover" routerLink="/gamePage/{{game.id}}">
     <p class="gameName">{{game.name}}</p>
   </div>
 
-  <div class="col-12">
+  <div class="col-12 col-sm-8">
     <p class="review">{{review.review}}</p>
   </div>
 </div>

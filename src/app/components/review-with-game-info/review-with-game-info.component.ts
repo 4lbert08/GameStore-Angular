@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 import { Review } from '../../models/review';
 import { FirestoreService } from '../../services/firestore/firestore.service';
 import {Game} from '../../models/game';
+import {RouterLink, RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-review-with-game-info',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterModule],
   templateUrl: './review-with-game-info.component.html',
   styleUrl: './review-with-game-info.component.css'
 })
-export class ReviewWithGameInfoComponent {
+export class ReviewWithGameInfoComponent implements OnInit {
   @Input() public review!: Review;
   game: Game | null = null;
   isLoading: boolean = true;

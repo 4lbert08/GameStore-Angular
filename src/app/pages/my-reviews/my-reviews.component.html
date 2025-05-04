@@ -1,0 +1,23 @@
+<app-main-header></app-main-header>
+
+<app-user-nav-bar></app-user-nav-bar>
+
+<div class="container">
+  <div *ngIf="isLoading" class="loading">
+    <p>Cargando tus reseñas...</p>
+  </div>
+  <div *ngIf="error && !isLoading" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!isLoading && !error">
+    <div *ngIf="userReviews && userReviews.length > 0" class="reviews-container">
+      <app-review-with-game-info *ngFor="let review of userReviews" [review]="review"></app-review-with-game-info>
+    </div>
+    <div *ngIf="!userReviews || userReviews.length === 0" class="no-reviews">
+      <p>No tienes reseñas disponibles.</p>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -10,6 +10,7 @@ import {SignUpComponent} from './pages/sign-up/sign-up.component';
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './pages/reset-password/reset-password.component';
 import {OTPVerificationComponent} from './pages/otpverification/otpverification.component';
+import {MyReviewsComponent} from './pages/my-reviews/my-reviews.component';
 
 export const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent },
@@ -17,12 +18,12 @@ export const routes: Routes = [
   { path: 'advanced-search-page', component: AdvancedSearchPageComponent },
   { path: 'gamePage/:id', component: GameShowcasePageComponent },
   { path: 'userSettings', component: UserSettingsComponent},
+  { path: 'myReviews', component: MyReviewsComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signUp', component: SignUpComponent},
   { path: 'forgotPassword', component:ForgotPasswordComponent},
   { path: 'resetPassword', component:ResetPasswordComponent},
   { path: 'OTPVerification', component:OTPVerificationComponent},
-  { path: 'prueba', component: PruebaComponent },
   { path: '', component: LandingPageComponent },
   { path: '**', redirectTo: '' }
 ];
