@@ -2,7 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Review } from '../../models/review';
 import { FirestoreService } from '../../services/firestore/firestore.service';
-import { User } from '../../models/user';
+import { UserData } from '../../models/user';
 
 @Component({
   selector: 'app-review-with-user-info',
@@ -13,7 +13,7 @@ import { User } from '../../models/user';
 })
 export class ReviewWithUserInfoComponent {
   @Input() public review!: Review;
-  user: User | null = null;
+  user: UserData | null = null;
   isLoading: boolean = true;
   error: string | null = null;
   firestoreService: FirestoreService = inject(FirestoreService);

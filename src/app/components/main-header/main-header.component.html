@@ -33,13 +33,24 @@
       </a>
     </div>
 
-    <div class="mainHeader__icons">
-      <a id="cartLink" routerLink="" aria-label="View cart">
-        <img id="cartIcon" src="/imgs/carrito.webp" alt="Cart" />
-      </a>
-      <a id="logLink" routerLink="" aria-label="Log in">
-        <img id="logIcon" src="/imgs/log_in_icon.png" alt="User" />
-      </a>
-    </div>
+    <ng-container *ngIf="!user">
+      <div class="mainHeader__icons" *ngIf="!user">
+        <a id="logLink" routerLink="login" aria-label="Log in">
+          <img id="logIcon" src="/imgs/log_in_icon.png" alt="User" />
+        </a>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="user">
+      <div class="mainHeader__icons">
+        <a id="cartLink" routerLink="" aria-label="View cart">
+          <img id="cartIcon" src="/imgs/carrito.webp" alt="Cart" />
+        </a>
+        <a id="userImage" routerLink="" aria-label="Log in">
+          <img *ngIf="!userData?.avatar" src="imgs/default-profile.png" alt="User avatar"/>
+          <img *ngIf="userData?.avatar" src="{{userData?.avatar}}" alt="User avatar" style="border-radius: 50%" />
+        </a>
+      </div>
+    </ng-container>
   </div>
 </header>
