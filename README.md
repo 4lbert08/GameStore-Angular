@@ -100,7 +100,7 @@ Estas son las páginas de nuestra web. Estas carpetas contienen: name.html, name
 | `my-reviews` | Página de reseñas de usuario                   |
 | `my-orders`  | Página de pedidos de usuario                   |
 | `cart` | Página de carrito                   |
-| ``  | Página de pago                   |
+| `checkout`  | Página de pago                   |
 | `about-us-page`  | Página de AboutUs                   |
 
 ## 🖼️ Componentes (Templates) utilizados
