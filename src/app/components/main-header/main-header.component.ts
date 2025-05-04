@@ -40,13 +40,13 @@ export class MainHeaderComponent implements OnInit {
 
   goToAdvancedSearch() {
     this.gameSearchService.loadAllGames();
-    this.router.navigate(['advanced-search-page']);
+    this.router.navigate(['/advanced-search-page']).then(r => scroll(0,0));
   }
 
   search() {
     if (this.searchQuery) {
       this.gameSearchService.applyFilters({ searchTerm: this.searchQuery });
-      this.router.navigate(['advanced-search-page']);
+      this.router.navigate(['/advanced-search-page']).then(r => scroll(0,0));
     } else {
       this.goToAdvancedSearch();
     }
