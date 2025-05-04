@@ -11,6 +11,7 @@ import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.c
 import {ResetPasswordComponent} from './pages/reset-password/reset-password.component';
 import {OTPVerificationComponent} from './pages/otpverification/otpverification.component';
 import {MyReviewsComponent} from './pages/my-reviews/my-reviews.component';
+import {MyOrdersComponent} from './pages/my-orders/my-orders.component';
 
 export const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent },
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'gamePage/:id', component: GameShowcasePageComponent },
   { path: 'userSettings', component: UserSettingsComponent},
   { path: 'myReviews', component: MyReviewsComponent},
+  { path: 'myOrders', component: MyOrdersComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signUp', component: SignUpComponent},
   { path: 'forgotPassword', component:ForgotPasswordComponent},

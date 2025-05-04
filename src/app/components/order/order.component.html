@@ -1,0 +1,33 @@
+<div class="order-card">
+  <div class="order-status">Completed</div>
+  <div class="order-content">
+    <div class="product-image">
+      <img src="{{game?.gameCover}}" routerLink="/gamePage/{{game?.id}}">
+      <div class="product-name">{{game?.name}}</div>
+    </div>
+
+    <div class="order-details">
+      <div class="order-header">
+        <div class="order-number">ID: {{order?.id}}</div>
+        <div class="order-date"></div>
+      </div>
+
+      <div class="order-specs">
+        <div class="spec-item">
+          <span class="spec-label">System: {{game?.system}}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Platform: {{game?.platform}}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Price: {{game?.amount}}{{game?.currency}}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Quantity: {{order?.quantity}}</span>
+        </div>
+      </div>
+
+      <a href="" class="download-link">download invoice</a>
+    </div>
+  </div>
+</div>
