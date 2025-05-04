@@ -1,60 +1,113 @@
 <app-main-header/>
+
 <app-user-nav-bar/>
 
-<div class="container-fluid ">
-<div class="row">
-  <div class="col-xl-6 mb-4">
-    <div class="container-fluid userContainer">
-    <img class="userConfiguration__image" src="imgs/default-profile.png">
-    <button type="button" class="btn btn-primary">Cerrar sesion</button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-6 mb-4">
+      <div class="container-fluid userContainer">
+        <img *ngIf="!userData?.avatar" class="userConfiguration__image" src="imgs/default-profile.png">
+        <img *ngIf="userData?.avatar" class="userConfiguration__image" src="{{userData?.avatar}}">
+        <p class="userConfiguration__nickname">{{userData?.nickname}}</p>
+        <button type="button" class="btn btn-primary" (click)="logOut()">Cerrar sesion</button>
+      </div>
+    </div>
+
+    <div class="col-xl-4 mb-4">
+      <form class="userConfiguration__form" (ngSubmit)="onSubmit()" novalidate>
+        <div>
+          <label for="nickname">Cambiar el nickname</label>
+          <input
+            class="userConfiguration__form-input"
+            type="text"
+            name="nickname"
+            id="nickname"
+            minlength="3"
+            maxlength="20"
+            [(ngModel)]="userDataEdit.nickname"
+            [ngClass]="{'is-invalid': formSubmitted && formErrors.nickname}">
+          <div *ngIf="formSubmitted && formErrors.nickname" class="invalid-feedback">
+            {{ formErrors.nickname }}
+          </div>
+        </div>
+
+        <div>
+          <label for="birthday">Cambiar el cumpleaños</label>
+          <input
+            class="userConfiguration__form-input"
+            type="date"
+            name="birthday"
+            id="birthday"
+            [(ngModel)]="userDataEdit.birthday"
+            [ngClass]="{'is-invalid': formSubmitted && formErrors.birthday}">
+          <div *ngIf="formSubmitted && formErrors.birthday" class="invalid-feedback">
+            {{ formErrors.birthday }}
+          </div>
+        </div>
+
+        <div>
+          <label for="region">Cambiar de región</label>
+          <select
+            class="userConfiguration__form-input"
+            id="region"
+            name="region"
+            [(ngModel)]="userDataEdit.region"
+            [ngClass]="{'is-invalid': formSubmitted && formErrors.region}">
+            <option value="">Selecciona una región</option>
+            <option value="EU">EU</option>
+            <option value="NA">NA</option>
+            <option value="LATAM">LATAM</option>
+            <option value="AFR">AFR</option>
+            <option value="ASIA">ASIA</option>
+          </select>
+          <div *ngIf="formSubmitted && formErrors.region" class="invalid-feedback">
+            {{ formErrors.region }}
+          </div>
+        </div>
+
+        <div>
+          <label for="language">Cambiar de idioma</label>
+          <select
+            class="userConfiguration__form-input"
+            id="language"
+            name="language"
+            [(ngModel)]="userDataEdit.language"
+            [ngClass]="{'is-invalid': formSubmitted && formErrors.language}">
+            <option value="">Selecciona un idioma</option>
+            <option value="Español">Español</option>
+            <option value="English">English</option>
+          </select>
+          <div *ngIf="formSubmitted && formErrors.language" class="invalid-feedback">
+            {{ formErrors.language }}
+          </div>
+        </div>
+
+        <div>
+          <label for="profilePictureInput">Foto de perfil (Opcional)</label>
+          <input
+            class="userConfiguration__form-input"
+            type="file"
+            name="profilePicture"
+            id="profilePictureInput"
+            (change)="onFileSelected($event)"
+            accept="image/*"
+            [ngClass]="{'is-invalid': formSubmitted && formErrors.profilePicture}">
+          <div *ngIf="formSubmitted && formErrors.profilePicture" class="invalid-feedback">
+            {{ formErrors.profilePicture }}
+          </div>
+        </div>
+
+        <div>
+          <input
+            class="userConfiguration__ApplyButton btn btn-primary"
+            type="submit"
+            value="Aplicar"
+            id="save"
+            [disabled]="isUploading">
+        </div>
+      </form>
     </div>
   </div>
-
-  <div class="col-xl-6 mb-4">
-    <form class="userConfiguration__form">
-      <div>
-        <label for="nickname">Cambiar el nickname</label>
-        <input class="userConfiguration__form-input" type="text" name="nickname" id="nickname" maxlength="30">
-      </div>
-
-      <div>
-        <label for="birthday">Cambiar el cumpleaños</label>
-        <input class="userConfiguration__form-input" type="date" name="birthday" id="birthday">
-      </div>
-
-
-      <div>
-        <label for="region">Cambiar de región</label>
-        <select class="userConfiguration__form-input" id="region" name="region">
-          <option value="EU">EU</option>
-          <option value="NA">NA</option>
-          <option value="LATAM">LATAM</option>
-          <option value="AFR">AFR</option>
-          <option value="ASIA">ASIA</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="language">Cambiar de idioma</label>
-        <select class="userConfiguration__form-input" id="language" name="language">
-          <option value="Español">Español</option>
-          <option value="English">English</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="profilePictureInput">Foto de perfil (Opcional)</label>
-        <input class="userConfiguration__form-input" type="file" name="profilePicture" id="profilePictureInput">
-      </div>
-
-      <div >
-        <input class="userConfiguration__ApplyButton" type="submit" value="Aplicar" id="save">
-      </div>
-    </form>
-
-  </div>
 </div>
-</div>
-
 
 <app-footer/>
