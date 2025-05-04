@@ -9,6 +9,8 @@ import {UserSettingsComponent} from './pages/user-settings/user-settings.compone
 import {LoginComponent} from './pages/login/login.component';
 import {SignUpComponent} from './pages/sign-up/sign-up.component';
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
+import {ResetPasswordComponent} from './pages/reset-password/reset-password.component';
+import {OTPVerificationComponent} from './pages/otpverification/otpverification.component';
 
 export const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent },
@@ -19,6 +21,8 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'signUp', component: SignUpComponent},
   { path: 'forgotPassword', component:ForgotPasswordComponent},
+  { path: 'resetPassword', component:ResetPasswordComponent},
+  { path: 'OTPVerification', component:OTPVerificationComponent},
   { path: 'prueba', component: PruebaComponent },
   { path: '', component: LandingPageComponent },
   { path: '**', redirectTo: '' }
