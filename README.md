@@ -85,43 +85,43 @@ GameStore-Storage/
 
 Estas son las páginas de nuestra web. Estas carpetas contienen: name.html, name.css, name.ts, name.spec.ts.  
 
-|  Página          | Mockup implementado | Notas                              |
-| --------------- | ------------------- | ---------------------------------- |
-| `landing-page`    | `home_mockup`       | Página de inicio                   |
-| `advanced-search-page`    | `advancedSearch_mockup`       | Página de busqueda avanzada                  |
-| `game-showcae-page`    | `gameShowcase_mockup`       | Página del título seleccionado                   |
-| `view-more-section-page`    | `viewMoreSections_mockup`       | Página de ver más                   |
-| `login-page`    | `login_mockup`       | Página de login de usuario                   |
-| `forgot-password-page`    | `forgotPassword_mockup`       | Página de contraseña olvidada                   |
-| `otp-verification-page`    | `OTPVerification_mockup`       | Página de verificación de código                   |
-| `sign-up-page`    | `signUp_mockup`       | Página de signUp                   |
-| `reset-password-page`    | `resetPassword_mockup`       | Página de cambio de contraseña                   |
-| `user-settings-page`    | `userSettings_mockup`       | Página de configuración de usuario                   |
-| ``    | `myReviews_mockup`       | Página de reseñas de usuario                   |
-| ``    | `myOrders_mockup`       | Página de pedidos de usuario                   |
-| ``    | `cart_mockup`       | Página de carrito                   |
-| ``    | `checkout_mockup`       | Página de pago                   |
-| `about-us-page`    | `aboutUs_mockup`       | Página de AboutUs                   |
-
+|  Página         | Notas                              |
+| ---------------  | ---------------------------------- |
+| `landing-page`  | Página de inicio                   |
+| `advanced-search-page`    | Página de busqueda avanzada                  |
+| `game-showcae-page`    | Página del título seleccionado                   |
+| `view-more-section-page` | Página de ver más                   |
+| `login-page`    | Página de login de usuario                   |
+| `forgot-password-page` | Página de contraseña olvidada                   |
+| `otp-verification-page`    | Página de verificación de código                   |
+| `sign-up-page`    | Página de signUp                   |
+| `reset-password-page` | Página de cambio de contraseña                   |
+| `user-settings-page`  | Página de configuración de usuario                   |
+| `my-reviews` | Página de reseñas de usuario                   |
+| `my-orders`  | Página de pedidos de usuario                   |
+| `cart` | Página de carrito                   |
+| ``  | Página de pago                   |
+| `about-us-page`  | Página de AboutUs                   |
 
 ## 🖼️ Componentes (Templates) utilizados
 
 Estos son los componentes que son cargados en las páginas de la web. Estas carpetas contienen: name.html, name.css, name.ts, name.spec.ts.  
 
-| Componente     | Archivo en el que se carga      |
+| Componente     | Componente de página en el que se carga (Componentes situados en /src/app/pages)      |
 | -------------------- | ------------------------------- |
-| `main-header`        | Todas las páginas menos en advancedSearch.html               |
-| `secondary-header`        | advancedSearch.html               |
-| `footer`        | Todas las páginas               |
-| `game-card`        | Páginas que usan gamesCardGallery.html y gamesCardRowGallery.html|
-| `game-in-cart-component`        | shoppingCart.html               |
-| ``        | shoppingCart.html               |
-| `developer-card`        | aboutUs.html               |
-| `user-nav-bar`        | userSetting.html, myOrders.html y myReviews.html               |
-| `review-with-game-info`        | myReviews.html               |
-| `review-with-user-info`        | myReviews.html               |
-| `game-gallery`        | advancedSearch.html y viewMoreSections.html               |
-| `game-card-section`        | index.html y gameShowcase.html               |
+| `main-header`        | Todas las páginas menos en advanced-search-page               |
+| `secondary-header`        | advanced-search-page               |
+| `footer`        | Todos los componentes de página               |
+| `game-card`        | Páginas que usan games-gallery y games-card-section|
+| `item-cart-component`        | En el componente cart               |
+| ``        | En el componente cart               |
+| `developer-card`        | about-us               |
+| `user-nav-bar`        | user-settings-page, my-orders y my-reviews               |
+| `review-with-game-info`        | my-reviews               |
+| `review-with-user-info`        | my-reviews               |
+| `game-gallery`        | advanced-search-page y view-more-sections-page               |
+| `game-card-section`        | landing-page y game-showcase-page               |
+
 
 ## 🖥️ Modelos (Interfaces) utilizados
 
