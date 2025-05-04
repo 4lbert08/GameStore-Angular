@@ -9,7 +9,7 @@
     <h1 class="otp-container__title">Verificación del cambio de contraseña</h1>
 
     <section class="otp-container__box">
-      <form id="OTPForm">
+      <form id="OTPForm" (ngSubmit)="onSubmit()">
         <div class="otp-input-group">
           <label class="form-label" >Revisa tu correo electrónico para obtener el código de verificación que ha sido enviado.</label>
           <input class="form-control" type="text" placeholder="Introduce el código OTP" required>
