@@ -114,7 +114,7 @@ Estos son los componentes que son cargados en las páginas de la web. Estas carp
 | `footer`        | Todos los componentes de página               |
 | `game-card`        | Páginas que usan games-gallery y games-card-section|
 | `item-cart-component`        | En el componente cart               |
-| ``        | En el componente cart               |
+| `order`        | En el componente cart               |
 | `developer-card`        | about-us               |
 | `user-nav-bar`        | user-settings-page, my-orders y my-reviews               |
 | `review-with-game-info`        | my-reviews               |
