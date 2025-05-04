@@ -39,7 +39,7 @@ GameStore es una plataforma de comercio electrónico especializada en la venta d
 7. Permitir una fácil interacción.
 
 
-## 📂 Estructura del proyecto
+## 📂 Estructura del proyecto ANGULAR
 
 <pre>
 GameStore-Angular/
@@ -60,6 +60,25 @@ GameStore-Angular/
 │   ├── index.html       # Archivo HTML principal de la aplicación
 │   ├── main.ts          # Punto de entrada de la aplicación Angular
 │   ├── styles.css       # Estilos globales del proyecto
+</pre>
+
+
+## 🔥 Estructura del proyecto FIREBASE STORE
+
+<pre>
+GameStore-Firestore-Database/
+├── developers/              # Información sobre los desarrolladores del proyecto
+├── games/              # Información sobre los juegos disponiblles en el catálogo
+├── reviews/              # Reviews publicadas
+├── users/              # Usuarios registrados
+</pre>
+
+
+## 📦 Estructura del proyecto FIREBASE STORAGE
+
+<pre>
+GameStore-Storage/
+├── profiles/            # Imágenes de perfil de cada usuario
 </pre>
 
 ## 📄 Páginas (Templates) del proyecto
@@ -135,7 +154,5 @@ Hemos implementado Bootstrap en nuestro proyecto, siguiendo la recomendación de
 ## 🔗 Enlaces
 
 - **Figma**: [https://www.figma.com/design/cce85AsKYbHsWryGC4aJGa/MOCKUPS-PWM?m=auto&t=PlizMet0r5Rgm5UZ-6](#)
-- **Trello**: [https://trello.com/b/qtJ1w6iJ/tablero-pwm](#)
-- **PowerPoint**: [https://alumnosulpgc-my.sharepoint.com/:p:/g/personal/juan_del111_alu_ulpgc_es/EVa3iOpl8qNMmvmCZOqM1LEBggGdQMi6UYnNEfOOEYWcng?e=AJuOsa](#)
-
-
+- **Trello**: [https://trello.com/b/rqpZeotc/tablero-pwm-sprint-3](#)
+- **PowerPoint**: [https://alumnosulpgc-my.sharepoint.com/:p:/g/personal/alberto_rodriguez136_alu_ulpgc_es/ESOs6h63a-FInuf2RN01HvEBbM0Iv3EO8yjkpIpmClzWrQ ](#)
