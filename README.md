@@ -62,11 +62,11 @@ GameStore-Angular/
 │   ├── styles.css       # Estilos globales del proyecto
 </pre>
 
-## 📄 Páginas (Templates) HTML del proyecto
+## 📄 Páginas (Templates) del proyecto
 
 Estas son las páginas de nuestra web. Estas carpetas contienen: name.html, name.css, name.ts, name.spec.ts.  
 
-| Carpeta de la Página          | Mockup implementado | Notas                              |
+|  Página          | Mockup implementado | Notas                              |
 | --------------- | ------------------- | ---------------------------------- |
 | `landing-page`    | `home_mockup`       | Página de inicio                   |
 | `advanced-search-page`    | `advancedSearch_mockup`       | Página de busqueda avanzada                  |
@@ -87,21 +87,45 @@ Estas son las páginas de nuestra web. Estas carpetas contienen: name.html, name
 
 ## 🖼️ Componentes (Templates) utilizados
 
-Estos son elementos html "componentes" que son cargados en las páginas de la web.
+Estos son los componentes que son cargados en las páginas de la web. Estas carpetas contienen: name.html, name.css, name.ts, name.spec.ts.  
 
-| Archivo Template     | Archivo en el que se carga      |
+| Componente     | Archivo en el que se carga      |
 | -------------------- | ------------------------------- |
-| `mainHeader.html`        | Todas las páginas menos en advancedSearch.html               |
-| `secondHeader.html`        | advancedSearch.html               |
-| `footer.html`        | Todas las páginas               |
-| `gameCard.html`        | Páginas que usan gamesCardGallery.html y gamesCardRowGallery.html|
-| `gameInShoppingCart.html`        | shoppingCart.html               |
-| `gameSuggested.html`        | shoppingCart.html               |
-| `memberCard.html`        | aboutUs.html               |
-| `userMenuButton.html`        | userSetting.html, myOrders.html y myReviews.html               |
-| `userReview.html`        | myReviews.html               |
-| `gamesCardGallery.html`        | advancedSearch.html y viewMoreSections.html               |
-| `gamesCardRowGallery.html`        | index.html y gameShowcase.html               |
+| `main-header`        | Todas las páginas menos en advancedSearch.html               |
+| `secondary-header`        | advancedSearch.html               |
+| `footer`        | Todas las páginas               |
+| `game-card`        | Páginas que usan gamesCardGallery.html y gamesCardRowGallery.html|
+| `game-in-cart-component`        | shoppingCart.html               |
+| ``        | shoppingCart.html               |
+| `developer-card`        | aboutUs.html               |
+| `user-nav-bar`        | userSetting.html, myOrders.html y myReviews.html               |
+| `review-with-game-info`        | myReviews.html               |
+| `review-with-user-info`        | myReviews.html               |
+| `game-gallery`        | advancedSearch.html y viewMoreSections.html               |
+| `game-card-section`        | index.html y gameShowcase.html               |
+
+## 🖥️ Modelos (Interfaces) utilizados
+
+A continuación, se describen los modelos utilizados en el proyecto, los cuales definen la estructura de datos para las entidades principales de la aplicación.  
+
+| Modelo     | Propósito      |
+| -------------------- | ------------------------------- |
+| `Developer`        |  Representa a un desarrollador del equipo   |
+| `Game`        |  Representa un juego en la tienda |
+| `Review`        | Representa una reseña de un juego  |
+| `User`        | Representa un usuario de la plataforma |
+
+## ⚙️ Servicios utilizados
+
+Estos son los servicios del proyecto, encargados de la lógica de negocio y la comunicación con el backend. Cada uno contiene un archivo ts y spec.ts
+
+| Servicio     | Propósito      |
+| -------------------- | ------------------------------- |
+| `auth`        |  Gestiona la autenticación de usuarios (Register y login)   |
+| `firestorage`        |  Maneja el almacenamiento de archivos |
+| `firestore`        | Administra la base de datos en tiempo real  |
+| `game-search`        | Facilita la búsqueda de juegos |
+| `game-section-transfer`        | Transfiere datos entre secciones de juegos |
 
 
 ## ➕ Otros aspectos
