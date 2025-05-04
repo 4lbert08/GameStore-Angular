@@ -92,10 +92,10 @@ Estas son las páginas de nuestra web. Estas carpetas contienen: name.html, name
 | `game-showcae-page`    | `gameShowcase_mockup`       | Página del título seleccionado                   |
 | `view-more-section-page`    | `viewMoreSections_mockup`       | Página de ver más                   |
 | `login-page`    | `login_mockup`       | Página de login de usuario                   |
-| ``    | `forgotPassword_mockup`       | Página de contraseña olvidada                   |
-| ``    | `OTPVerification_mockup`       | Página de verificación de código                   |
+| `forgot-password-page`    | `forgotPassword_mockup`       | Página de contraseña olvidada                   |
+| `otp-verification-page`    | `OTPVerification_mockup`       | Página de verificación de código                   |
 | `sign-up-page`    | `signUp_mockup`       | Página de signUp                   |
-| ``    | `resetPassword_mockup`       | Página de cambio de contraseña                   |
+| `reset-password-page`    | `resetPassword_mockup`       | Página de cambio de contraseña                   |
 | `user-settings-page`    | `userSettings_mockup`       | Página de configuración de usuario                   |
 | ``    | `myReviews_mockup`       | Página de reseñas de usuario                   |
 | ``    | `myOrders_mockup`       | Página de pedidos de usuario                   |
