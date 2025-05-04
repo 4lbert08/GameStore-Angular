@@ -12,6 +12,7 @@ import {ResetPasswordComponent} from './pages/reset-password/reset-password.comp
 import {OTPVerificationComponent} from './pages/otpverification/otpverification.component';
 import {MyReviewsComponent} from './pages/my-reviews/my-reviews.component';
 import {MyOrdersComponent} from './pages/my-orders/my-orders.component';
+import {CartComponent} from './pages/cart/cart.component';
 
 export const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'userSettings', component: UserSettingsComponent},
   { path: 'myReviews', component: MyReviewsComponent},
   { path: 'myOrders', component: MyOrdersComponent},
+  { path: 'cart', component: CartComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signUp', component: SignUpComponent},
   { path: 'forgotPassword', component:ForgotPasswordComponent},

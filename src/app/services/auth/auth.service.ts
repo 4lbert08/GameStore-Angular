@@ -61,4 +61,13 @@ export class AuthService {
   getCurrentUser(): Observable<User | null> {
     return this.user$;
   }
+
+  userId?: string;
+  getCurrentUserId() {
+    this.getCurrentUser().subscribe(user => {
+      this.userId = user?.uid
+    });
+    return this.userId;
+  }
+
 }

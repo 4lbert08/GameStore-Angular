@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
 import {User} from 'firebase/auth';
 import {AuthService} from '../../services/auth/auth.service';
 import {FormsModule} from '@angular/forms';
+import {CartService} from '../../services/cart.service';
+import {ItemCart} from '../../models/item-cart';
 
 @Component({
   selector: 'app-game-showcase-page',
@@ -40,6 +42,7 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
   private sanitizer = inject(DomSanitizer);
   private zone = inject(NgZone);
   private authService: AuthService = inject(AuthService);
+  private cartService: CartService = inject(CartService);
 
   ngOnInit(): void {
 
@@ -126,4 +129,20 @@ export class GameShowcasePageComponent implements OnInit, OnDestroy {
     this.sanitizedTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(trailer) as string;
   }
 
+  async addToCart(): Promise<void> {
+    if (!this.game) return;
+
+    const item: ItemCart = {
+      gameId: this.game.id,
+      quantity: 1
+    };
+
+    try {
+      await this.cartService.addToCart(item);
+      alert('Game added to cart!');
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      alert('There was a problem adding the game to your cart.');
+    }
+  }
 }
