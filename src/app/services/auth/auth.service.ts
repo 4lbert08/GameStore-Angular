@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User, onAuthStateChanged } from 'firebase/auth';
 import { Observable } from 'rxjs';
+import {user} from '@angular/fire/auth';
+import {FirestoreService} from '../firestore/firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
+  firestore: FirestoreService = inject(FirestoreService);
   private auth = getAuth();
   user$: Observable<User | null>;
 
@@ -23,14 +27,23 @@ export class AuthService {
       return userCredential.user;
     } catch (error) {
       console.error("Error in login:", error);
-      return null;
+      throw error;
     }
   }
 
-  async register(email: string, password: string): Promise<User | null> {
+  async register(email: string, password: string, nickname: string, region: string, birthday: Date) {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-      return userCredential.user;
+      if (userCredential.user) {
+
+        const userData = {
+          email: email,
+          nickname: nickname,
+          region: region,
+          birthday: birthday
+        }
+        return this.firestore.addUser(userData, userCredential.user.uid);
+      }
     } catch (error) {
       console.error("Error in register:", error);
       return null;
