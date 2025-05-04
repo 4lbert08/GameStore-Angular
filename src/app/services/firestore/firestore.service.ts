@@ -7,7 +7,7 @@ import {
   Firestore,
   query,
   where,
-  QueryConstraint, setDoc
+  QueryConstraint, setDoc, updateDoc
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Game } from '../../models/game';
@@ -97,5 +97,10 @@ export class FirestoreService {
   loadUser(userId: string) {
     const userDocRef = doc(this.firestore, `users/${userId}`);
     return docData(userDocRef, { idField: 'id' }) as Observable<UserData>;
+  }
+
+  updateUser(id: string |undefined, user: Partial<UserData>) {
+    const userDocRef = doc(this.firestore, `users/${id}`);
+    return updateDoc(userDocRef, user);
   }
 }
