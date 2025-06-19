@@ -24,7 +24,7 @@
           type="number"
           class="quantity-input"
           [(ngModel)]="item.quantity"
-          (change)="updateQuantity(item.id, item.quantity)"
+          (change)="updateQuantity(item.id!, item.quantity)"
           min="1">
       </div>
     </div>
